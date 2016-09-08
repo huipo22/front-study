@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串对象</title>
+	<script>
+		//var str="www.sougou.com";
+		//alert(str.charAt(5))
+		//alert(str.charCodeAt(5))
+		//alert(String.fromCharCode(111));
+		//alert(str.indexOf("c"));
+		//alert(str.lastIndexOf("w"));
+		//var str="吃葡萄1不吐葡萄2皮,不吃葡萄3吐葡萄4皮";
+		//alert(str.match("葡萄"));
+		//alert(str.match(/\d+/g));
+		// alert(str.replace("葡萄","putao"));
+		//alert(str.slice(-4));
+		//alert(str.slice(-4,-2));
+	/*练习一	
+	var str="img/1.jpg";
+		str=str.replace("jpg","gif");
+		alert(str);*/
+	/*练习二		
+	var str="吃葡萄1不吐葡萄2皮,不吃葡萄3吐葡萄4皮";
+		for(var i in str){
+			str=str.replace("葡萄","putao")
+		}
+		alert(str);*/
+		//练习三
+		//第一种方法
+/*		var str1="优逸客官网地址:http://www.sxuek.com,优逸客课程体系:http://www.sxuek.com/uisj/,优逸客学生体系:http://www.sxuek.com/sxzp/";*/
+/*		for(var i in str1){
+			 if(str1.substr(i,5)=="sxuek"){
+			 	document.write(i+"<br>");
+			 }
+		}*/
+		//原理：先用indexOf("sxuek")找出第一次出现的位置，然后再重组这个字符串（把匹配的"sxuek"这个字符串去掉），第二次找时在新字符串上进行查找
+		//第二种方法
+/*		var num=0;
+		while(str1.match("sxuek")){
+			var weizhi=str1.indexOf("sxuek");
+			weizhi+=num;
+			num+=5;
+			document.write(weizhi+"<br>");
+			str1=str1.slice(0,str1.indexOf("sxuek"))+str1.slice(str1.indexOf("sxuek")+5)
+		}*/
+		//var arr=[12,34,234,56,78];
+		// arr.splice(1,0,33,44,55);
+		// alert(arr);
+		//alert(arr.join("*"))
+		//alert(arr.slice(1,4));
+		// var arr1=[88,99,77];
+		// var arr2=["a","b","c"]
+		// alert(arr.concat(arr1,arr2));
+/*		var arr1=[12,34,10,123,1]
+		// alert(arr1.sort(function(a,b){
+		// 	return a-b;
+		// }))
+		alert(arr1.sort(function(a,b){
+			return b-a;
+		}))*/
+/*		var arr=[3,5,2,3,12,2,4,3];
+		function delRepeat(arr){
+			var newarr=[];
+			for(var i=0;i<arr.length;i++){//遍历数组，先取一个值与后面的每一个值进行比较
+				var flag=true;//控制是否要把push到新数组中
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]==arr[j]){
+						//比较以后，如果两个数相等，则结束循环体
+						flag=false;//不让它push
+						break;
+					}
+				}
+				if(flag){//如果i与每一个j比较以后都不相等开关是开的
+					newarr.push(arr[i]);
+				}	
+			}
+			return newarr
+		}
+		alert(delRepeat(arr))*/
+		// document.write(Math.ceil(Math.random()*10));
+/*		var num=3 .123456789;
+		document.write(num.toFixed(3))*/
+		//var str="a|b|c||d|e|e|ef|gh";
+		// document.write(str.lastIndexOf("e"));
+		// document.write(String.fromCharCode(100,111,122))
+		//document.write(str.split("|"))
+/*		var arr=[2,4,3,5,12,7,8,3,7,6,2,4];
+		function delRepeat(arr){
+			var newarr=[];
+			for(var i=0;i<arr.length;i++){
+				var flag=true;
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]==arr[j]){
+						flag=false;
+						break;
+					}
+				}
+				if(flag){
+					newarr.push(arr[i]);
+				}
+				
+			}
+			return newarr;
+		}
+		document.write(newarr)*/
+		var arr=[2,4,3,5,12,7,8,3,7,6,2,4];
+		for( var i=0;i<arr.length;i++){
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[i]==arr[j]){
+					arr.splice(j,1)
+				}
+			}
+		}
+		document.write(arr)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

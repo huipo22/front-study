@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本兼容</title>
+	<script src="
+	classname.js"></script>
+	<script>
+	window.onload=function(){
+		var box=getClass("box")[0];
+		var btn=document.getElementById("anniu");
+		var box1=getClass("box1")[0];
+		btn.onclick=function(){
+			var con=box.innerHTML;
+			box1.innerHTML=con;
+			getText(box1,"sjfksd")
+			//alert(box1.textContent)
+		}
+		var link=getClass("link")[0];
+		//alert(link.href);
+		//link.href="http:www.baidu.com"
+		//alert(link.getAttribute("href"))
+		//link.setAttribute("href","http:www.sina.com")
+	}
+	</script>
+	<style>
+	div{
+		width: 300px;
+		height: 200px;
+		border: 1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<h3>面朝大海，春暖花开</h3>	
+	</div>
+	<input type="button" value="复制" id="anniu">
+	<div class="box1"></div>
+	<a href="#" class="link">这是一个链接</a>
+</body>
+</html>

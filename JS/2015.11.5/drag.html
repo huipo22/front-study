@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style>
+	.box{
+		width: 120px;
+		height: 160px;
+		background: red;
+		position: fixed;
+		/*须有固定定位	否则：获取距离事件源的位置与距离浏览器的位置相等*/
+		left: 0;
+		top:0;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var box=$(".box")[0];
+		var cw=document.documentElement.clientWidth;//浏览器的宽
+		var ch=document.documentElement.clientHeight;//浏览器的高
+		var sw=box.offsetWidth;//自身的宽
+		var sh=box.offsetHeight;//自身的高
+
+		// 拖动一个元素，前提必须按下才能移动，抬起停止移动
+		box.onmousedown=function(e){
+			var ev=e || window.event;
+			var ox=ev.layerX||ev.offsetX;//鼠标事件距离事件源的位置	(x轴)
+			var oy=ev.layerY||ev.offsetY;//鼠标事件距离事件源的位置	(y轴)
+
+
+			if(ev.preventDefault){
+				ev.preventDefault();//阻止默认浏览器动作（W3C）
+			}else{
+				ev.returnValue=false;//IE阻止函数默认动作的方式
+			}
+
+
+			document.onmousemove=function(e){	// 在浏览器中(document)移动
+				var ev=e || window.event;
+				var cx=ev.clientX;//鼠标事件距离浏览器的位置	(x轴)
+				var cy=ev.clientY;//鼠标事件距离浏览器的位置	(y轴)
+				var newx=cx-ox;//鼠标事件距离浏览器的位置	-	鼠标事件距离事件源的位置
+
+				var newy=cy-oy;
+
+				if(newy<=0){//上
+					newy=0;
+				}
+				if(newx<=0){//左
+					newx=0
+				}	
+				if(newy>=ch-sh){//下
+					newy=ch-sh;
+				}
+				if(newx>=cw-sw){//右
+					newx=cw-sw;
+				}
+
+				box.style.left=newx+"px";//新的宽
+				box.style.top=newy+"px";//新的高
+			}
+		}
+
+		box.onmouseup=function(){
+			document.onmousemove=null;
+		}
+	})
+	</script>
+</head>
+<body>
+	<span>abcdef</span>
+	<div class="box">abcdef</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可编辑的表格</title>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var tables=$("#tables");
+/*		addEvent(tables,"dblclick",function(e){//绑定事件
+			var ev=e||window.event;
+			var obj=ev.target||ev.srcElement;//事件委托、单击的是谁
+			if(obj.nodeName=="TH"){
+				return;
+			}
+			var text=document.createElement("input");//创建input标签
+			// alert(text);
+			text.type="text";//类型设为text
+			text.style.width=obj.offsetWidth-20+"px";
+			text.style.borderWidth="0px";
+			var val=obj.innerHTML;//内容保存下来，放在val中
+			obj.innerHTML="";//置空
+			obj.appendChild(text);//追加input
+			text.focus();//获取焦点
+			text.value=val;//光标定位在后面
+			text.onblur=tables.onkeydown=function(e){//失去焦点、键盘按下事件
+				var ev=e||window.event;
+				if(ev.type=="blur"||(ev.type=="keydown"&&ev.keyCode==13)){//通过type来判断
+					obj.innerHTML=text.value;//输入的文本内容又保存在obj中
+
+				}
+			}
+		})*/
+		addEvent(tables,"dblclick",function(e){
+			var ev=e||window.event;
+			var obj=ev.target||ev.srcElement;
+			if(obj.nodeName=="TH"){
+				return;
+			}
+			var text=document.createElement("input");
+			text.type="text";
+			var val=obj.innerHTML;
+			obj.innerHTML="";
+			obj.appendChild(text);
+			text.focus();
+			text.value=val;
+			text.onblur=tables.onkeydown=function(e){
+				var ev=e||window.event;
+				if(ev.type=="blur"||(ev.type=="keydown"&&ev.keyCode==13)){
+					obj.innerHTML=text.value;
+				}
+			}
+		})
+	})
+	</script>
+</head>
+<body>
+	<table id="tables" align="center" border="1" width="500px" cellspacing="0" cellpadding="5">
+		<caption>学生成绩单</caption>
+		<tr>
+			<th width="20%">姓名</th>
+			<th width="20%">学号</th>
+			<th width="20%">性别</th>
+			<th width="20%">年龄</th>
+			<th width="20%">成绩</th>
+		</tr>
+		<tr>
+			<td>小明</td>
+			<td>20120002</td>
+			<td>男</td>
+			<td>22</td>
+			<td>89</td>
+		</tr>
+		<tr>
+			<td>小兰</td>
+			<td>20120003</td>
+			<td>女</td>
+			<td>21</td>
+			<td>88</td>
+		</tr>
+	</table>
+</body>
+</html>

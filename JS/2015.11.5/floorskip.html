@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天猫搜索、楼层跳转</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding:0;
+		list-style: none;
+		height: 3200px;
+	}
+	.search{
+		width: 100%;
+		height: 50px;
+		background: blue;
+		position: fixed;
+		top: -50px;
+		left: 0;
+	}
+	.banner{
+		width: 800px;
+		height: 400px;
+		background: red;
+		margin: 0 auto;
+		margin-bottom:20px;
+	}
+	.floor{
+		width: 800px;
+		height: 400px;
+		border: 1px solid black;
+		font-size: 40px;
+		text-align: center;
+		line-height: 400px;
+		margin: 0 auto;
+		margin-bottom:20px;
+	}
+	.btn{
+		width: 40px;
+		height: 245px;
+		border: 1px solid black;
+		position: fixed;
+		left: 40px;
+		top: 30%;
+		cursor: pointer;
+		display: none;
+	}
+	.btn li{
+		width: 40px;
+		height: 40px;
+		border-bottom: 1px solid black;
+		text-align: center;
+		line-height: 40px;
+	}
+	.btn.last{
+		border-bottom: none;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var search=$(".search")[0];
+		var btn=$(".btn")[0];
+		var xiaobtn=$("li",btn);
+		var floor=$(".floor")
+		var flag=true;//滚动条往下拉时的开关，第一次是开，这个开关要保证每一次往下拉时，开关都是开着的
+		var flag2=true;
+
+		//通过小按钮控制滚动条
+		for(var i=0;i<xiaobtn.length;i++){
+			xiaobtn[i].index=i;
+			xiaobtn[i].onclick=function(){
+				var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+				animate(obj,{scrollTop:floor[this.index].oT},400,Tween.Linear)
+	
+				for(var j=0;j<xiaobtn.length;j++){
+						xiaobtn[j].style.background="";
+					}
+				xiaobtn[this.index].style.background="red";
+			}
+		}
+		window.onscroll=function(){
+			var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+			var scrollT=obj.scrollTop;
+			document.title=scrollT;
+
+
+			if(scrollT>=300){
+				if(flag){
+					animate(search,{top:0},400,Tween.Linear)
+					flag=false;//第一次往下，执行完后，把开关关掉
+					flag2=true;
+				}
+			}else{
+				if(flag2){
+					animate(search,{top:-50},400,Tween.Linear)
+					flag=true;
+					flag2=false
+				}	
+			}
+
+			if(scrollT>=300){
+				btn.style.display="block";
+			}else{
+				btn.style.display="none"
+			}
+
+
+			for(var i=0;i<floor.length;i++){
+				floor[i].oT=floor[i].offsetTop;//保证每一个楼层的offsetTop（自身到浏览器上边的距离）
+				//offsetTop:自身到body的距离
+				//scrollT:页面超出浏览器的距离
+				
+				if(scrollT>=floor[i].oT){//文档超出浏览器的距离>  自身到浏览器上边的距离
+					//如果scrollT超出当前楼层的（自身到body的距离），就让对应的小按钮变化
+					for(var j=0;j<xiaobtn.length;j++){
+						xiaobtn[j].style.background=""
+					}
+					xiaobtn[i].style.background="red";
+				}
+			}
+		}
+	})
+/*	$(function(){
+		var search=$(".search")[0]
+		var btn=$(".btn")[0];
+		var xiaobtn=$("li",btn);
+		var floor=$(".floor");
+		var flag=true;
+		var flag2=true;
+
+		for(var i=0;i<xiaobtn.length;i++){
+			xiaobtn[i].index=i;
+			xiaobtn[i].onclick=function(){
+				var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+				animate(obj,{scrollTop:floor[this.index].oT},400,Tween.Linear)
+				for(var j=0;j<xiaobtn.length;j++){
+					xiaobtn[j].style.background="";
+				}
+				xiaobtn[this.index].style.background="red";
+			}
+		}
+
+		window.onscroll=function(){
+			var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+			var scrollT=obj.scrollTop;
+			document.title=scrollT;
+			if(scrollT>=300){
+				if(flag){
+					animate(search,{top:0},400,Tween.Linear)
+					flag=false;
+					flag2=true
+				}
+			}else{
+				if(flag2){
+					animate(search,{top:-50},400,Tween.Linear)
+					flag=true;
+					flag2=false;
+				}	
+			}
+
+			if(scrollT>=300){
+				btn.style.display="block";
+			}else{
+				btn.style.display="none";
+			}
+
+			for(var i=0;i<floor.length;i++){
+				floor[i].oT=floor[i].offsetTop;
+				if(scrollT>=floor[i].oT){
+					for(var j=0;j<xiaobtn.length;j++){
+						xiaobtn[j].style.background="";
+					}
+					xiaobtn[i].style.background="red";
+				}
+			}
+		}
+	})*/
+	</script>
+</head>
+<body>
+	<div class="search">
+		<input type="button" value="搜索">
+	</div>
+
+	<div class="banner"></div>
+	<div class="floor">1</div>
+	<div class="floor">2</div>
+	<div class="floor">3</div>
+	<div class="floor">4</div>
+	<div class="floor">5</div>
+	<div class="floor">6</div>
+	<ul class="btn">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li class="last">6</li>
+	</ul>
+</body>
+</html>

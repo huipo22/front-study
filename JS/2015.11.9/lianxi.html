@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<style>
+	.title{
+		width: 298px;
+		height: auto;
+		border: 1px solid #ccc;
+		background: #ccc;
+		margin: 0 auto;
+	}
+	.title>p{
+		margin: 0;
+		width: 298px;
+		height: 40px;
+		line-height: 40px;
+	}
+	#text{
+		width: 298px;
+		height: 200px;
+		margin: 0 auto;
+		display: block;
+		padding: 0;
+		resize:none;
+		font-size: 24px;
+	}
+	.tip{
+		color:red;
+		width: 298px;
+		height: 50px;
+		border: 1px solid #ccc;
+		margin: 0 auto;
+	}
+	#btn{
+		display: block;
+		margin: 0 auto
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var title=$(".title")[0];
+		var tip=$(".tip")[0];
+		var btn=$("#btn");
+		var text=$("#text");
+		btn.onclick=text.onkeydown=function(e){
+			var ev=e||window.event;
+			if(ev.type=="click"){
+				var val=text.value;
+				val=val.replace(/^\s*|\s*$/g,"");
+				text.value="";
+				if(val==""){
+					alert("请输入内容")
+				}else{
+					var ps=document.createElement("p");
+					ps.innerHTML=val;
+					title.appendChild(ps);
+				}
+			}else if(ev.type="keydown"){
+				if(ev.ctrlKey){
+					if(ev.keyCode==13){
+						var val=text.value;
+						val=val.replace(/^\s*|\s*$/g,"");
+						text.value="";
+						if(val==""){
+							alert("请输入内容")
+						}else{
+							var ps=document.createElement("p");
+							ps.innerHTML=val;
+							title.appendChild(ps);
+						}
+					}
+				}
+			}
+		}
+		text.onkeyup=text.onkeypress=function(e){
+			var val=text.value;
+			var num=val.length;
+			if(num>40){
+				text.value=val.substr(0,40);
+				tip.innerHTML="您可以输入40个字符，已经输入40个，还可以输入0个字符"
+			}else{
+				var max=40;
+				tip.innerHTML="您可以输入40个字符，已经输入"+num+"个，还可以输入"+(max-num)+"个字符"
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<form action="">
+		<div class="title">
+			<p>留言板：</p>
+		</div>
+		<textarea name="" id="text" cols="30" rows="10"></textarea>
+		<div class="tip">您可以输入40个字符，已经输入0个，还可以输入40个字符</div>
+		<input type="button" value="提交" id="btn">
+	</form>
+</body>
+</html>

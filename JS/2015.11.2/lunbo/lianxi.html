@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.out{
+		width: 800px;
+		height: 400px;
+		margin: 50px auto;
+		border: 1px solid red;
+		position: relative;
+	}
+	.imgs{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	.img{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.img.one{
+		background: red;
+		z-index: 3
+	}
+	.img.two{
+		background: yellow;
+	}
+	.img.three{
+		background: blue;
+	}
+	.img.four{
+		background: green;
+	}
+	.lists{
+		width: 240px;
+		height: 30px;
+		position: absolute;
+		right: 30px;
+		bottom: 20px;
+		z-index: 4;
+		/*border: 1px solid red;*/
+	}
+	.lists li{
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		float: left;
+		margin-left: 20px;
+		background: #333;
+		color: #fff;
+		text-align: center;
+		line-height: 30px;
+	}
+	.lists .hot{
+		background: #a50000;
+	}
+	</style>
+	<script src="../../js/function.js"></script>
+	<script>
+	$(function(){
+		var imgs=$(".img");
+		var lists=$(".lists")[0];
+		var lis=$("li",lists);
+		for(var i=0;i<lis.length;i++){
+			lis[i].index=i;
+			lis[i].onmouseover=function(){
+				clearInterval(t);
+				for(var j=0;j<imgs.length;j++){
+					imgs[j].style.zIndex=2;
+					lis[j].style.background="#333"
+				}
+				imgs[this.index].style.zIndex=3;
+				lis[this.index].style.background="#a50000"
+			}
+			lis[i].onmouseout=function(){
+				t=setInterval(move,2000);
+				num=this.index+1; //原来顺序被打乱   需要重新指定   如果不指定，会发生错乱
+				console.log(num)
+			}
+		}
+		var t=setInterval(move,2000);
+		var num=1;
+		function move(){
+			if(num==imgs.length){
+				num=0;
+			}
+			for(var i=0;i<imgs.length;i++){
+				imgs[i].style.zIndex=2;//循环
+				lis[i].style.background="#333"
+				// console.log(i)
+			}
+			console.log(num)
+			/*
+				 i    	0  1  2  3
+				num	 	1  2  3  0
+			*/
+			imgs[num].style.zIndex=3;//显示		循环完了就要显示  所以num刚开始=1，否则慢1秒才显示；
+			lis[num].style.background="#a50000";
+			num++;
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="out">
+		<div class="imgs">
+			<div class="img one"></div>
+			<div class="img two"></div>
+			<div class="img three"></div>
+			<div class="img four"></div>
+		</div>
+		<ul class="lists">
+			<li class="hot">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+</body>
+</html>

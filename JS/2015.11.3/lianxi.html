@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点练习</title>
+	<script src="../js/function.js"></script>
+	<style>
+	.box{
+		width: 100px;
+		height: 120px;
+		background: yellow;
+		/*border: 1px solid black;*/
+		text-align: center;
+		line-height: 120px;
+		font-size: 24px;
+	}
+	.three{
+		width: 200px;
+		height: 60px;
+		border: 1px solid red;
+		text-align: center;
+		line-height: 60px;
+	}
+	</style>
+	<script>
+	$(function(){
+		var btn=$("input");
+		var box2=$(".box")[1];
+		var box1=$(".box")[0];
+		var three=$(".three")[0];
+		var divs;//全局变量
+		var text;//全局变量
+		//创建
+		btn[0].onclick=function(){
+			divs=document.createElement("div");
+			divs.style.cssText="width:100px;height:100px;background:red";
+			text=document.createTextNode("创建成功");
+			document.body.appendChild(divs);
+			three.appendChild(text);
+		}
+		//插入
+		btn[1].onclick=function(){
+			three.innerHTML="插入成功";
+			document.body.insertBefore(divs,box2);
+		}
+		//删除
+		btn[2].onclick=function(){
+			three.innerHTML="删除成功";
+			document.body.removeChild(divs);
+		}
+		//复制
+		btn[3].onclick=function(){
+			three.innerHTML="复制成功";
+			var box3=box2.cloneNode(true);
+			document.body.insertBefore(box3,box2);
+		}
+		//替换
+		btn[4].onclick=function(){
+			 //创建之后才能替换
+			three.innerHTML="替换成功";
+			document.body.replaceChild(divs,box1);
+		}
+		//刷新
+		btn[5].onclick=function(){
+			location.reload();
+		}
+	})
+	</script>
+</head>
+<body>
+	<input type="button" value="创建">
+	<input type="button" value="插入">
+	<input type="button" value="删除">
+	<input type="button" value="复制">
+	<input type="button" value="替换">
+	<input type="button" value="刷新">
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="three"></div>
+</body>
+</html>

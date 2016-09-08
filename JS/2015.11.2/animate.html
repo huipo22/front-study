@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> 动画</title>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var box=$(".box")[0];
+		box.onclick=function(){
+			/*animate(box,{width:500,height:500},1000,Tween.Linear,function(){
+				animate(box,{width:200,height:200},1000,Tween.Linear)
+			})*/
+		colorAnimate(box,"background","#ffffff",800,Tween.Bounce.easeOut)
+		}
+	})
+	</script>
+	<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		background: #c40000;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

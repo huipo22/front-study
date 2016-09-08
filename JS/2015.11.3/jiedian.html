@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点</title>
+	<script src="../js/function.js"></script>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+		.inner{
+			width: 100px;
+			height: 30px;
+			border: 1px solid red;
+			z-index: 3;
+		}
+	</style>
+	<script>
+	$(function(){
+		 // var innerone=$(".inner")[0];
+		 //innerone.style.background="yellow";
+		 // var aa=getDown(innerone);
+		 // aa.style.background="green";
+		// var father=innerone.parentNode;
+		var box=$(".box")[0];
+		// var random=getNum(box,0)
+		// random.style.background="blue";
+		//var childs=father.childNodes;
+		document.write(getChilds(box,"b").length)
+		//document.write(childs.length)
+		/*var inner=getLast(box);
+		inner.style.background="yellow";*/
+		//var inner=getFirst(box);
+		//inner.style.background="yellow";
+		//var box=$(".box")[0];
+		//var aa=getFirst(box);//从父节点中获取到最后一个子节点
+		//aa.style.background="pink";
+		//var bb=getDown(aa);//最后一个子节点的兄弟节点
+		//bb.style.background="pink";
+		// var aa=getNum(box,2);
+		// var bb=getUp(aa);
+		// bb.style.background="pink";
+	})
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="inner" style="background:blue"></div>
+		<div class="inner" style="background:blue"></div>
+		<div class="inner" style="background:blue"></div>
+		<div class="inner" style="background:blue"></div>
+		<div class="inner" style="background:blue"></div>
+	</div>
+</body>
+</html>

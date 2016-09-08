@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>作用域链</title>
+	<script>
+		// var aa=7
+		// function bb(val){
+			
+		// 	alert(++aa) 
+		// }
+		// bb(aa);
+		// alert(aa)
+		// var val=10;
+		// function a(){
+		// 	var val=20;
+		// 		function b(){
+		// 		  val=30;	
+		// 		}
+		// 		b();
+		// 		alert(val)
+		// }
+		// a()
+		// var aa=10;
+		// function fun(){
+		// 	aa++;
+		// 	alert(aa++)
+		// }
+		// fun()
+		// alert(aa)
+		// var aa=10;
+		// function fun(aa){
+		// 	aa++;
+		// 	alert(aa++)
+		// }
+		// fun(aa++)
+		// alert(aa)
+		function jia(a,b){
+			return a+b;
+		}
+		function jian(a,b){
+			return a-b;
+		}
+		function jsq(val1,val2,fun){
+			return fun(val1,val2)
+		}
+		alert(jsq(1,1,jia))
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

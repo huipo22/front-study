@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件触发</title>
+	<script src="../js/function.js"></script>
+	<script>
+/*	$(function(){
+		var text=$("#text");
+		text.onfocus=function(){//获得焦点
+			if(text.value=="请输入你的姓名"){//当value的值为初始值时才清空
+				text.value="";
+			}//其他情况不做操作
+		}
+		text.onblur=function(){//失去焦点
+			if(text.value){//有值时不操作
+
+			}else{//没有值时回到初始状态
+				text.value="请输入你的姓名";
+			}
+		}
+	})*/
+/*	$(function(){
+		var text=$("#text");
+		text.onfocus=function(){
+			if(text.value=="请输入你的姓名"){
+				text.value="";
+			}
+		}
+		text.onblur=function(){
+			if(text.value){
+
+			}else{
+				text.value="请输入你的姓名"
+			}
+		}
+	})*/
+	$(function(){
+		var text=$("#text");
+		text.onfocus=function(){
+			if(text.value=="请输入你的姓名"){
+				text.value="";
+			}
+		}
+		text.onblur=function(){
+			if(text.value){
+
+			}else{
+				text.value="请输入你的姓名";
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<input type="text" placeholder="请输入你的姓名" id="text">
+</body>
+</html>

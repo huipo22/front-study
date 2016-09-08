@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点轮播</title>
+	<style>
+	.bannerbox{
+		width: 800px;
+		height: 400px;
+		border: 1px solid black;
+		margin: 0 auto;
+	}
+	.leftbtn,.rightbtn{
+		width: 100px;
+		height: 400px;
+		font-size:60px;
+		text-align: center;
+		line-height: 400px;
+		float: left;
+		background: #ccc;
+		cursor: pointer;
+	}
+	.leftbtn:hover,.rightbtn:hover{
+		background: #333;
+		color: #fff;
+	}
+	.rightbtn{
+		float: right;
+	}
+	.banner{
+		width: 600px;
+		height: 400px;
+		float: left;
+		position: relative;
+		overflow: hidden;
+	}
+	.imgsbox{
+		width: 2400px;
+		height: 400px;
+		position: absolute;
+		/* 轮播的  每一个盒子  都必须放在 imgbox 里，所以也要用固定定位 */
+		left: 0;
+		top:0;
+	}
+	.imgs{
+		width: 600px;
+		height: 400px;
+		float: left;
+		text-align: center;
+		line-height: 400px;
+		font-size:50px;
+	}
+	span{
+		/* display: inline-block; */
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+	img{
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+	input{
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+	select{
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+	textarea{
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+	table{
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		jiedianlunbo(".imgsbox",".leftbtn",".rightbtn")
+/*		var imgsbox=$(".imgsbox")[0];
+		var leftbtn=$(".leftbtn")[0];
+		var rightbtn=$(".rightbtn")[0];
+		var t=setInterval(moveleft,2000);
+		//左移
+		function moveleft(){
+			animate(imgsbox,{left:-600},450,Tween.Linear,function(){
+				var first=getFirst(imgsbox);
+				imgsbox.appendChild(first);
+				imgsbox.style.left=0;
+			})	
+		}
+		//右移
+		function moveright(){
+			var last=getLast(imgsbox);
+			imgsbox.insertBefore(last,getFirst(imgsbox));
+			imgsbox.style.left="-600px";//当在-600px的位置 才能右移
+			animate(imgsbox,{left:0},450,Tween.Linear);
+		}
+		//左边按钮划下来
+		leftbtn.onmouseover=rightbtn.onmouseover=function(){
+			clearInterval(t);
+		}
+		//右边按钮划下来
+		leftbtn.onmouseout=rightbtn.onmouseout=function(){
+			t=setInterval(moveleft,2000);
+		}
+		//点击左边按钮
+		leftbtn.onclick=function(){
+			moveleft();
+		}
+		//点击右边按钮
+		rightbtn.onclick=function(){
+			moveright();
+		}*/
+	})
+	</script>
+</head>
+<body>
+	<div class="bannerbox">
+		<div class="leftbtn"><</div>
+		<!-- 轮播区 start-->
+		<div class="banner">
+			<div class="imgsbox">
+				<div class="imgs" style="background:red">1</div>
+				<div class="imgs" style="background:yellow">2</div>
+				<div class="imgs" style="background:blue">3</div>
+				<div class="imgs" style="background:green">4</div>
+			</div>
+		</div>
+		<!-- 轮播区 end-->
+		<div class="rightbtn">></div>
+<!-- 		<span>12331</span>
+<span>12331</span>
+<span>12331</span>
+<img src="1.jpg" alt="">
+<img src="2.jpg" alt="">
+<img src="3.jpg" alt="">
+<input type="text">
+<input type="text">
+<input type="text">
+<select name="" id=""></select>
+<select name="" id=""></select>
+<select name="" id=""></select>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<table></table>
+<table></table> -->
+	</div>
+</body>
+</html>

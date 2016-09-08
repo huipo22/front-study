@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>兼容函数</title>
+	<style>
+	.box{
+		border: 1px solid #ccc;
+		overflow: hidden;
+	}
+	.inner{
+		width: 100px;
+		height: 200px;
+		border: 1px solid red;
+		float: left;
+		margin-right: 20px;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		function getClass(classname,obj){
+			var obj=obj||document;
+			if(obj.getElementsByClassName){
+				return obj.getElementsByClassName(classname)
+			}else{
+				var alls=obj.getElementsByTagName("*");
+				var arr=[];
+				for(var i=0;i<alls.length;i++){
+					if(checkClass(alls[i].className,classname)){
+						arr.push(alls[i]);
+					}
+				}
+			}
+			return arr;
+		}
+		function checkClass(str,classname){
+			var newarr=str.split(" ");
+			for(var i in newarr){
+				if(newarr[i]==classname){
+					return true;
+				}
+			}
+			return false;
+		}
+		var box=getClass("box")[0];
+		var inner=getClass("inner",box)[2];
+		inner.style.background="pink";
+	}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="inner">1</div>
+		<div class="inner">2</div>
+		<div class="inner">3</div>
+	</div>
+	<div class="inner">3</div>
+</body>
+</html>

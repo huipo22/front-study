@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建节点</title>
+	<script src="../js/function.js"></script>
+	<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		background: pink;
+	}
+	</style>
+	<script>
+	$(function(){
+		var  a=document.createElement("a");
+		var text=document.createTextNode("这是一个链接");
+		var hr=document.createAttribute("href");
+		hr.nodeValue="htt://www.baidu.com";
+		a.setAttributeNode(hr);
+		document.body.appendChild(a);
+		a.appendChild(text);
+		var box=$(".box")[1];
+		document.body.insertAfter(a,box);
+	})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+</html>

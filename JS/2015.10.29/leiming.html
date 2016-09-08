@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.bigbox{
+		border: 1px solid red;
+		overflow: hidden;
+	}
+	.inner{
+		width: 100px;
+		height: 150px;
+		border: 1px solid black;
+		float: left;
+		margin-right: 30px;
+	}
+	</style>
+	<script>
+/*	window.onload=function(){
+		function getClass(classname,obj){
+			var obj=obj||document;
+			if(obj.getElementsByClassName){
+				return obj.getElementsByClassName(classname)
+			}else{
+				var alls=obj.getElementsByTagName("*");
+				var arr=[];
+				for(var i=0;i<alls.length;i++){
+					if(checkClass(alls[i].className,classname)){
+						arr.push(alls[i])
+					}
+				}
+			}
+			return arr;
+		}
+		var bigbox=getClass("bigbox")[0];
+		var inner=getClass("inner",bigbox)[2];
+		inner.style.background="pink";
+		function checkClass(str,classname){
+			var newarr=str.split(" ");
+			for(var i=0;i<newarr.length;i++){
+				if(newarr[i]==classname){
+					return true;
+				}
+			}
+			return false;
+		}
+	}*/
+	window.onload=function(){
+		function getClass(classname,obj){
+			var obj=obj||document;
+			if(obj.getElementsByClassName){
+				return obj.getElementsByClassName(classname);
+			}else{
+				var alls=obj.getElementsByTagName("*");
+				var arr=[];
+				for(var i=0;i<alls.length;i++){
+					if(checkClass(alls[i].className,classname)){
+						arr.push(alls[i]);
+					}
+				}
+			}
+			return arr;
+		}
+		var bigbox=getClass("bigbox")[0];
+		var inner=getClass("inner",bigbox)[2];
+		inner.style.background="pink";
+		function checkClass(str,classname){
+			var newarr=str.split(" ");
+			for(var i in newarr){
+				if(newarr[i]==classname){
+					return true;
+				}
+			}
+			return false;
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div class="bigbox">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="inner"></div>
+</body>
+</html>

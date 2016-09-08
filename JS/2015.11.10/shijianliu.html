@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件流</title>
+	<script>
+	function text(a){
+		alert(a)
+	}
+	</script>
+</head>
+<body>
+	<div onclick="text('我是div')">
+		<ul onclick="text('我是ul')">
+			<li onclick="text('我是li')">11111</li>
+		</ul>
+	</div>
+</body>
+</html>

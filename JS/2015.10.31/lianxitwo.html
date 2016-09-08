@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习2</title>
+	<style>
+	.box{
+		width: 480px;
+		height: 400px;
+		border: 1px solid #c40000;
+		margin: 0 auto;
+	}
+	.titlebox{
+		width: 100%;
+		height: 50px;
+		background: pink;
+	}
+	.title{
+		width: 120px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		float: left;
+	}
+	.conbox{
+		width: 100%;
+		height: 350px;
+	}
+	.con{
+		width: 100%;
+		height: 350px;
+		text-align: center;
+		line-height: 350px;
+		border: 1px solid #ccc;
+		font-size: 40px;
+	}
+	.boxs{
+		width: 200px;
+		height: 200px;
+		background:  #c40000;
+		margin: 0 auto;
+	}
+	</style>
+	<script src="../2015.10.30/lianxi.js/"></script>
+	<script>
+	window.onload=function(){
+		var title=getClass("title");
+		var con=getClass("con");
+		for(var i=0;i<title.length;i++){
+			title[i].index=i;
+			title[i].onclick=function(){
+				for(var j=0;j<con.length;j++){
+					con[j].style.display="none";
+					title[j].style.fontWeight="normal";
+					title[j].style.textDecoration="none";
+				}
+				con[this.index].style.display="block";
+				title[this.index].style.fontWeight="bold";
+				title[this.index].style.textDecoration="underline";
+			}
+		}
+		var boxs=getClass("boxs")[0];
+		var t=setInterval(move,200);
+		var speed=5;
+		function move(){
+			var w=parseInt(getStyle(boxs,"width"));
+			var h=parseInt(getStyle(boxs,"height"));
+			boxs.style.width=w+speed+"px";
+			boxs.style.height=h+speed+"px";
+			var newW=parseInt(w+speed);
+			if(newW>=400){
+				clearInterval(t);
+				function move2(){
+					var w=parseInt(getStyle(boxs,"width"));
+					var h=parseInt(getStyle(boxs,"height"));
+					boxs.style.width=w-speed+"px";
+					boxs.style.height=h-speed+"px";
+					var newW=parseInt(w+speed);
+					if(newW<=200){
+						clearInterval(t2)
+					}
+				}
+				var t2=setInterval(move2,200);
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<!-- <div class="box">
+		<div class="titlebox">
+			<div class="title">一</div>
+			<div class="title">二</div>
+			<div class="title">三</div>
+			<div class="title">四</div>
+		</div>
+		<div class="conbox">
+			<div class="con">1</div>
+			<div class="con">2</div>
+			<div class="con">3</div>
+			<div class="con">4</div>
+		</div>
+	</div> -->
+	<div class="boxs"></div>
+</body>
+</html>

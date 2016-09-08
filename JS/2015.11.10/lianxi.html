@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可编辑的表格</title>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var tables=$(".tables")[0];
+		addEvent(tables,"dblclick",function(e){
+			var ev=e||window.event;
+			var obj=ev.target||ev.srcElement;
+			if(obj.nodeName=="TH"){
+				return;
+			}
+			var inputs=document.createElement("input");
+			var val=obj.innerHTML="";
+			obj.appendChild(inputs);
+			inputs.focus();
+			inputs.value=val;
+			inputs.onblur=tables.onkeydown=function(e){
+				var ev=e||window.event;
+				if(ev.type=="blur"||(ev.type=="keydown"&&(ev.keyCode==13))){
+					obj.innerHTML=inputs.value;
+				}
+			}
+		})
+	})
+	</script>
+</head>
+<body>
+	<table class="tables" width="500px" cellspacing="0" cellpadding="5" align="center" border="1">
+		<caption>学生成绩单</caption>
+		<tr>
+			<th width="20%">姓名</th>
+			<th width="20%">学号</th>
+			<th width="20%">性别</th>
+			<th width="20%">年龄</th>
+			<th width="20%">成绩</th>
+		</tr>
+		<tr>
+			<td>小明</td>
+			<td>20150001</td>
+			<td>男</td>
+			<td>22</td>
+			<td>90</td>
+		</tr>
+		<tr>
+			<td>小兰</td>
+			<td>20150002</td>
+			<td>女</td>
+			<td>20</td>
+			<td>89</td>
+		</tr>
+	</table>
+</body>
+</html>

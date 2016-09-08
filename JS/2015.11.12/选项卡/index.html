@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+    .box{
+    	width: 812px;
+    	height: 356px;
+    	border: 1px solid #ccc;
+    	margin:0 auto;
+    }
+    .titlebox{
+    	width: 812px;
+    	height: 26px;
+    }
+    .title,.huan{
+       width: 100px;
+       height: 100%;
+       float: left;
+    }
+    .conbox{
+    	width: 100%;
+    	height: 330px;
+    	position: relative;
+    }
+    .con{
+    	width: 812px;
+    	height:330px;
+    	background: #ccc;
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    }
+    .one{
+    	z-index: 2;
+    }
+	</style>
+	<script src="document.js"></script>
+	<script>
+    $(function(){
+       var onearr=[];
+       var twoarr=[];
+       var threearr=[];
+       var fourarr=[];
+       var con=$(".con");
+       var title=$(".title");
+       var huan=$(".huan")[0];
+       var taoxin=$(".taoxin");
+       //放图片
+       for(var i=9;i<45;i++){
+	       	onearr.push("img/"+i+".jpg");//34
+	        twoarr.push("img/"+i+".jpg");//34
+	        threearr.push("img/"+i+".jpg");//34
+	        fourarr.push("img/"+i+".jpg");//34
+       }
+       //随机取24张图片
+        function random(arr){
+        	var newarr=[];
+        	for(i=0;i<24;i++){
+        		newarr.push(arr[parseInt(Math.random()*36)]);
+        	}
+        	return newarr;
+        }
+        random(onearr);
+        var tuarr=[onearr,twoarr,threearr,fourarr]
+        function show(num){
+           var imgarr=random(tuarr[num])
+           for(i=0;i<imgarr.length;i++){
+              var div=document.createElement("div");
+              div.style.cssText="width:133px;heihgt:81px;float:left;background:white;margin-left:2px;margin-bottom:2px;text-align:center;line-height:81px;position:relative;";
+              var xin=document.createElement("div");
+              xin.style.cssText="width:15px;height:15px;border-radius:50%;background:red;position:absolute;top:10px;right:10px;display:none";
+              div.appendChild(xin);
+              var img=document.createElement("img")
+              img.src=imgarr[i];
+              img.style.cssText="vertical-align:middle; width:90px;heihgt:45px"
+              div.appendChild(img)
+              con[num].appendChild(div)
+              div.className="imgbox";
+              xin.className="taoxin";
+              //alert(xin.className)
+              var imgbox=$(".imgbox");
+              var taoxin=$(".taoxin");
+              for(var j=0;j<imgbox.length;j++){
+              	imgbox[j].index=j;
+              	imgbox[j].onmouseover=function(){
+              		taoxin[this.index].style.display="block";
+              	}
+              	imgbox[j].onmouseout=function(){
+              		taoxin[this.index].style.display="none";
+              	}
+              	
+              }
+           }
+        }
+        
+        show(0)
+        var index=0;
+        for (var i=0;i<title.length;i++){
+        	title[i].index=i;
+        	title[i].flag=true;
+        	title[0].flag=false;
+        	title[i].onclick=function(){
+        		index=this.index;
+        		for(var j=0;j<con.length;j++){
+        			con[j].style.zIndex=1;
+        		}
+        		con[this.index].style.zIndex=2;
+        		if(this.flag){
+        			show(this.index);
+        			this.flag=false;
+        		}
+        	}
+        }
+        huan.onclick=function(){
+        	con[index].innerHTML="";
+        	show(index)
+        }
+        
+
+    })
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="titlebox">
+			<div class="title">国际大牌</div>
+			<div class="title">时尚潮流</div>
+			<div class="title">国际品牌</div>
+			<div class="title">天猫原创</div>
+			<div class="title huan">换一批</div>
+		</div>
+		<div class="conbox">
+			<div class="con one"></div>
+			<div class="con"></div>
+			<div class="con"></div>
+			<div class="con"></div>
+		</div>
+	</div>
+</body>
+</html>

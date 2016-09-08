@@ -1,0 +1,16 @@
+页面可见性API
+
+当用户切换浏览器标签的时候,页面可见性API(Page Visibility API, http://davidwalsh.name/page-visibility )将触发一个事件，而开发者可以监听这个事件并做一些处理.
+
+document.hidden   返回当前浏览器 是否隐藏 是true 否false
+
+visibilitychange  页面可见性事件 监测页面是否隐藏显示
+
+
+ var title=document.title;
+document.addEventListener?document.addEventListener('visibilitychange',content):document.attachEvent('onvisibilitychange',content);
+function content() {	
+    var str='你快回来，我一人忽悠不来！';
+    //document.hidden  返回当前浏览器是否隐藏
+  　document.title = document.hidden ? str:title;
+} 

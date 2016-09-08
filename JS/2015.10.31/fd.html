@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.out{
+		width: 800px;
+		height: 800px;
+		border: 1px solid red;
+	}
+	.box{
+		width: 200px;
+		height: 200px;
+		background: pink;
+		margin-left: 35%;
+	}
+	</style>
+	<script src="../2015.10.30/function.js"></script>
+	<script>
+	window.onload=function(){
+		var box=$(".box")[0];
+		var sp=5;
+		var t=setInterval(move,100);
+		function move(){
+			var w=parseInt(getStyle(box,"width"));
+			var h=parseInt(getStyle(box,"height"));
+			box.style.width=w+sp+'px';
+			box.style.height=h+sp+'px';
+			var newW=(w+sp);
+			if(newW>=400){
+				clearInterval(t);
+				var t2=setInterval(move2,100)
+				function move2(){
+					var w=parseInt(getStyle(box,"width"));
+					var h=parseInt(getStyle(box,"height"));
+					box.style.width=w-sp+'px';
+					box.style.height=h-sp+'px';
+					var newW=(w+sp);
+					if(newW<=200){
+						clearInterval(t2);
+						t=setInterval(move,100)
+					}
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div class="out">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

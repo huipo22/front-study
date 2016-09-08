@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<script src="../../js/function.js"></script>
+	<script>
+	$(function(){
+		var onearr=[];
+		var twoarr=[];
+		var threearr=[];
+		var fourarr=[];
+
+		var title=$(".title");
+		var huan=$(".huan")[0];
+		var con=$(".con")
+
+		for(var i=0;i<43;i++){
+			onearr.push("img/"+i+".jpg");
+			twoarr.push("img/"+i+".jpg")
+			threearr.push("img/"+i+".jpg");
+			fourarr.push("img/"+i+".jpg")
+		}
+
+		function random(arr){
+			var newarr=[];
+			for(var i=0;i<24;i++){
+				newarr.push(arr[parseInt(Math.random()*43)])
+			}
+			return newarr
+		}
+		
+		// random(twoarr)
+		var tuarr=[onearr,twoarr,threearr,fourarr]
+		function show(num){
+			var imgarr=random(tuarr[num])
+			for(var i=0;i<imgarr.length;i++){
+				var div=document.createElement("div");
+				div.style.cssText="width:133px;height:81px;float:left"
+				var img=document.createElement("img");
+				img.style
+				.cssText="width:90px;height45px;vertical:middle;line-height:81px;"
+				img.src=imgarr[i];
+				div.appendChild(img);
+				con[num].appendChild(div);
+			}
+		}
+		show(0);
+		var index=0;
+		for(var i=0;i<title.length;i++){
+			title[i].index=i;
+			title[i].flag=true;
+			title[0].flag=false;
+			title[i].onclick=function(){
+				index=this.index;
+				for(var j=0;j<con.length;j++){
+					con[j].style.zIndex=1;
+				}
+				con[this.index].style.zIndex=2;
+				if(this.flag){
+					show(this.index);
+					this.flag=false;
+				}
+				
+			}
+		}
+
+		huan.onclick=function(){
+			// alert(i);
+			// alert(index)
+			con[index].innerHTML="";
+			show(index);
+		}
+		
+	})
+	</script>
+	<style>
+	.box{
+		width:810px;
+		height: 356px;
+		border: 1px solid red;
+		margin: 0 auto; 
+	}
+	.titlebox{
+		width: 100%;
+		height: 26px;
+		border: 1px solid red;
+	}
+	.title,.huan{
+		width: 100px;
+		float: left;
+		font-size: 14px;
+		text-align: center;
+		line-height: 26px;
+	}
+	.conbox{
+		width: 100%;
+		height: 330px;
+		/*background: #ccc;*/
+		position: relative;
+	}
+	.con{
+		width: 100%;
+		height: 330px;
+		position: absolute;
+		top: 0;
+		left:0;
+		/*background: red;*/
+	}
+	.one{
+		/*background: blue;*/
+		z-index: 2;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="titlebox">
+			<div class="title">1111</div>
+			<div class="title">2222</div>
+			<div class="title">3333</div>
+			<div class="title">4444</div>
+			<div class="huan">换一批</div>
+		</div>
+		<div class="conbox">
+			<div class="con"></div>
+			<div class="con"></div>
+			<div class="con one"></div>
+			<div class="con"></div>
+		</div>
+	</div>
+</body>
+</html>

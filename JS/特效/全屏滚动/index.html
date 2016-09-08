@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	html,body{
+		height: 100%;
+	}
+	/* 
+		给html,body设置高
+	*/
+	.conbox{
+		width: 100%;
+		height: 400%;
+		background: #ccc;
+	}
+	.conbox .floor{
+		width: 100%;
+		height: 25%;
+		font-size: 140px;
+		text-align: center;
+		line-height: 600px;
+	}
+	.f1{
+		background: red;
+	}
+	.f2{
+		background: yellow;
+	}
+	.f3{
+		background: blue;
+	}
+	.f4{
+		background: green;
+	}
+	.nav{
+		width: 50px;
+		height: 240px;
+		position: fixed;
+		right: 30px;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+	}
+	.nav li{
+		width: 100%;
+		height: 50px;
+		background: #ccc;
+		text-align: center;
+		line-height: 50px;
+		border-radius: 50%;
+		margin-bottom: 20px;
+	}
+	.nav .hot{
+		background: #a50000;
+		color: #fff;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/mouseWheel.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	/*
+		animate动画参数需要熟练掌握  必须要有时间  
+		animate(obj,{left:-index*cL},800,Tween.Linear,function(){
+			flag=true;
+		})
+	*/
+	$(function(){
+		var conbox=$(".conbox")[0];
+		var cH=document.documentElement.clientHeight;
+		var nav=$(".nav")[0];
+		var lis=$("li",nav);
+		var index=0;
+		var flag=true;
+		var len=lis.length;
+		mouseWheel(window,function(){
+			if(!flag){
+				return;
+			}
+			flag=false;
+			index--;
+			if(index<0){
+				index=3;
+			}
+			/*
+				index  0  1  2  3 
+				marginTop: 相对于当前元素的上外边距
+						   相对于0来说，所以都是负的
+						   0*cH
+						  -1*cH
+						  -2*cH
+						  -3*cH
+			*/
+			for(var i=0;i<len;i++){
+				lis[i].className="";
+			}
+			lis[index].className="hot";
+			animate(conbox,{marginTop:-index*cH},800,Tween.Linear,function(){
+				flag=true;
+			})
+			console.log(-index*cH)
+		},function(){
+			if(!flag){
+				return;
+			}
+			flag=false;
+			index++;
+			if(index==4){
+				index=0;
+			}
+			for(var i=0;i<len;i++){
+				lis[i].className="";
+			}
+			lis[index].className="hot";
+			animate(conbox,{marginTop:-index*cH},800,Tween.Linear,function(){
+				flag=true
+			})
+			console.log(-index*cH)
+		})
+		for(var i=0;i<len;i++){
+			lis[i].index=i;
+			lis[i].onclick=function(){
+				for(var j=0;j<len;j++){
+					lis[j].className="";
+				}
+				lis[this.index].className="hot";
+				animate(conbox,{marginTop:-this.index*cH},800,Tween.Linear,function(){
+					flag=true;
+				})
+			}
+		}
+	})
+	</script>
+</head>
+<!-- 去除页面滚动条 -->
+<body style="overflow:-Scroll;overflow-y:hidden">
+	<div class="conbox">
+		<div class="floor f1">One</div>
+		<div class="floor f2">Two</div>
+		<div class="floor f3">Three</div>
+		<div class="floor f4">Four</div>
+	</div>
+	<ul class="nav">
+		<li class="hot">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>

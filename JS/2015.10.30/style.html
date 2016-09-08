@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>style样式</title>
+	<script src="classname.js"></script>
+	<style>
+	.box{
+		background: green;
+		color: red;
+		border:1px solid red
+	}
+	#word{
+		background: red;
+		color:white;
+	}
+	#reword{
+		background: white;
+		color:red;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var box=getClass("box")[0];
+		//box.style.height="400px";
+		var btn=document.getElementById("btn");
+		btn.onclick=function(){
+			box.id="reword";
+			//document.write(box.currentStyle.width);
+			//document.write(window.getComputedStyle(box).width);
+			//var t=getStyle(box,"color");
+			//document.write(t)
+		}
+
+	}
+	
+	</script>
+</head>
+<body>
+	<div class="box" style="width:200px;height:100px" id="word">Hello World!</div>
+	<input type="button" value="变色" id="btn">
+</body>
+</html>

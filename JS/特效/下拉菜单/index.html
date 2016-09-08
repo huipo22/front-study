@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+	.menubox{
+		width: 1000px;
+		height: 50px;
+		background: #ccc;
+		/*border: 1px solid red;*/
+		margin: 40px auto;
+		/*overflow: hidden;*/
+	}
+	.yiji{
+		width: 200px;
+		height: 50px;
+		float: left;
+		text-align: center;
+		line-height: 50px;
+		position: relative;
+	}
+	.yiji a{
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		display: inline-block;
+	}
+	.yiji a:hover{
+		background: #a50000;
+		color: #fff;
+	}
+	.erji{
+		width: 200px;
+		height: 0;
+		 /*高度设为0*/
+		background: #ccc;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		overflow: hidden;
+		/*给二级菜单加overflow*/
+	}
+	.erji li a{
+		width: 200px;
+		height: 50px;
+		background: #ccc;
+		text-align: center;
+		line-height: 50px;
+	}
+	.erji a:hover{
+		background: #a50000;
+		color: #fff;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var yj=$(".yiji");
+		var ej=$(".erji");
+		for(var i=0;i<yj.length;i++){
+			yj[i].index=i;
+			yj[i].onmouseover=function(){
+				var lis=$("li",ej[this.index]);
+				var h=lis[0].offsetHeight;
+				// ej[this.index].style.height=0;
+				animate(ej[this.index],{height:h*lis.length},400,Tween.Linear)
+			}
+			yj[i].onmouseout=function(){
+				animate(ej[this.index],{height:0},400,Tween.Linear)
+			}
+			hover(yj[i],function(){
+				var lis=$("li",ej[this.index]);//鼠标划上去才去获取li
+				var h=lis[0].offsetHeight;//获取li的高度
+				ej[this.index].style.height=0;
+				animate(ej[this.index],{height:h*lis.length},400,Tween.Linear)
+			},function(){
+				animate(ej[this.index],{height:0},400,Tween.Linear)
+			})
+		}
+	})
+/*	$(function(){
+		var yiji=$(".yiji");
+		var erji=$(".erji");
+		for(var i=0;i<yiji.length;i++){
+			yiji[i].index=i;
+			hover(yiji[i],function(){
+				var lis=$("li",erji[this.index]);
+				var h=lis[0].offsetHeight;
+				animate(erji[this.index],{height:h*lis.length},400,Tween.Linear)
+			},function(){
+				animate(erji[this.index],{height:0},400,Tween.Linear)
+			})
+		}
+	})*/
+	</script>
+</head>
+<body>
+	<div class="menubox">
+		<div class="yiji">
+			<a href="">首页</a>
+			<ul class="erji">
+				<li></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">新闻</a>
+			<ul class="erji">
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+				<li><a href="">今日新闻</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">关于</a>
+			<ul class="erji">
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+			</ul>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">合作</a>
+			<ul class="erji">
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">国际</a>
+			<ul class="erji">
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

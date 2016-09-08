@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>桃心</title>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var imgbox=$(".imgbox");
+		var taoxin=$(".taoxin");
+		for(var i=0;i<imgbox.length;i++){
+			imgbox[i].index=i;
+			imgbox[i].onmouseover=function(){
+				taoxin[this.index].style.display="block"
+			}
+			imgbox[i].onmouseout=function(){
+				taoxin[this.index].style.display="none"
+			}
+		}
+	})
+	</script>
+	<style>
+	.imgbox{
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+		position: relative;
+	}
+	.img{
+		width: 100px;
+		height: 100px;
+		margin: 50px 50px;
+		background: pink;
+	}
+	.taoxin{
+		width: 20px;
+		height: 20px;
+		background: red;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		border-radius: 50%;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="imgbox">
+		<div class="img"></div>
+		<div class="taoxin"></div>
+	</div>
+	<div class="imgbox">
+		<div class="img"></div>
+		<div class="taoxin"></div>
+	</div>
+	<div class="imgbox">
+		<div class="img"></div>
+		<div class="taoxin"></div>
+	</div>
+	<div class="imgbox">
+		<div class="img"></div>
+		<div class="taoxin"></div>
+	</div>
+</body>
+</html>

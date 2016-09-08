@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件流2</title>
+	<style>
+	.father{
+		width: 260px;
+		height: 102px;
+		border: 1px solid red;
+	}
+	.sons{
+		width: 50px;
+		height: 50px;
+		border: 1px solid black;
+		float: left;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var father=$(".father")[0];
+		addEvent(father,"click",function(e){
+			var ev=e||window.event;
+			var obj=ev.target;
+			// alert(obj)
+			obj.style.background="blue"
+		})
+	})
+	</script>
+</head>
+<body>
+	<div class="father">
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+		<div class="sons"></div>
+	</div>
+</body>
+</html>

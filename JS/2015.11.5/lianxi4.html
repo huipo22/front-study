@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉菜单</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		color: #333;
+		text-decoration: none;
+	}
+	.menubox{
+		width: 1000px;
+		height: 50px;
+		margin: 0 auto;
+	}
+	.yiji{
+		width:200px;
+		height: 50px;
+		background: #ccc;
+		float: left;
+		position: relative;
+	}
+	.yiji>a{
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		display: inline-block;
+	}
+	.yiji a:hover{
+		background: red;
+	}
+	.erji{
+		width: 200px;
+		height: 0;
+		background: #ccc;
+		overflow: hidden;
+		position: absolute;
+		top:50px;
+		left: 0
+	}
+	.erji li>a{
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		display: inline-block;
+		background: #ccc;
+	}
+	.erji a:hover{
+		background: red;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var menubox=$(".menubox")[0];
+		var yiji=$(".yiji")
+		var erji=$(".erji")
+		for(var i=0;i<yiji.length;i++){
+			yiji[i].index=i;
+			/*yiji[i].onmouseover=function(){
+				var lis=$("li",erji[this.index]);
+				var h=lis[0].offsetHeight;//应该从第一个li开始计算
+				erji[this.index].style.height=0;
+				animate(erji[this.index],{height:h*lis.length},400,Tween.Linear)
+			}
+			yiji[i].onmouseout=function(){
+				animate(erji[this.index],{height:0},400,Tween.Linear)
+			}*/
+			hover(yiji[i],function(){
+				var lis=$("li",erji[this.index]);
+				var h=lis[0].offsetHeight;//应该从第一个li开始计算
+				erji[this.index].style.height=0;
+				animate(erji[this.index],{height:h*lis.length},400,Tween.Linear)
+			},function(){
+				animate(erji[this.index],{height:0},400,Tween.Linear)
+			})
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="menubox">
+		<div class="yiji">
+			<a href="">首页</a>
+			<ul class="erji">
+				<li></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">新闻</a>
+			<ul class="erji">
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">动态</a>
+			<ul class="erji">
+				<li><a href="">今日动态</a></li>
+				<li><a href="">明日动态</a></li>
+				<li><a href="">后日动态</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">会员</a>
+			<ul class="erji">
+				<li><a href="">金牌会员</a></li>
+				<li><a href="">银牌会员</a></li>
+				<li><a href="">通牌会员</a></li>
+				<li><a href="">普通会员</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">我们</a>
+			<ul class="erji">
+				<li><a href="">联系我们</a></li>
+				<li><a href="">联系方式</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

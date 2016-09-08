@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习</title>
+	<style>
+	.box{
+		width: 310px;
+		height: 120px;
+		border: 1px solid #c40000;
+	}
+	.inner{
+		width: 100px;
+		height: 120px;
+		float: left;
+		border: 1px solid #ccc;
+		text-align: center;
+		line-height: 120px;
+	}
+	div{
+		width: 200px;
+		height: 100px;
+		border: 1px solid #c40000;
+	}
+	#word{
+		background: red;
+		color: white;
+	}
+	#reword{
+		background: white;
+		color: red;
+	}
+	</style>
+	<script src="lianxi.js"></script>
+	<script>
+	window.onload=function(){
+		var box=getClass("box")[0];
+		var inner=getClass("inner")[2];
+		inner.style.background="pink";
+		var text=getClass("text")[0];
+		var btn=document.getElementById("anniu");
+		var text1=getClass("text1")[0];
+		btn.onclick=function(){
+			// var con=text.innerHTML;
+			// text1.innerHTML=con;
+			getText(text,"abcdefg")
+		}
+		var box2=getClass("box2")[0];
+		var btn1=document.getElementById("btn1");
+		var bigbox=getClass("bigbox")[0]
+		btn1.onclick=function(){
+			//box2.id="reword";
+			//document.write(box2.currentStyle.width)
+			//document.write(window.getComputedStyle(box2).width);
+			//document.write(getStyle(box2,"width"));
+			document.write(getStyle(bigbox,"height"));
+		}
+		// alert(inner.length);
+
+	}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="inner">1</div>
+		<div class="inner">2</div>
+		<div class="inner">3</div>
+	</div>
+	<div class="text">
+		<h3>面朝大海，春暖花开</h3>
+	</div>
+	<input type="button" value="复制" id="anniu">
+	<div class="text1"></div>
+	<div class="box2" id="word">
+		<h3>Hello World!</h3>
+		<h3>Hello China!</h3>
+	</div>
+	<input type="button" value="变色" id="btn1">
+	<div class="bigbox" style="width:300px;height:300px;background:#c40000"></div>
+</body>
+</html>

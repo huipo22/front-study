@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+	.xiaobox{
+		width: 240px;
+		height: 170px;
+		border: 1px solid red;
+		float: left;
+		margin-right: 30px;
+		cursor: pointer;
+		position: relative;
+	}
+	.xiaoimg{
+		width: 240px;
+		height: 170px;
+	}
+	.xiaobox>span{
+		display: none;
+		width: 100px;
+		height: 120px;
+		background: yellow;
+		opacity: 0.2;
+		position: absolute;;
+		left: 0;
+		top: 0;
+	}
+	.xiaobox>.zhezhao{
+		width: 100%;
+		height: 100%;
+		position: absolute;;
+		left: 0;
+		top: 0;
+		z-index: 3
+	}
+	.dabox{
+		width:320px;
+		height: 225px;
+		border: 1px solid red;
+		position: relative;
+		display: none;
+		float: left;
+		overflow: hidden;
+	}
+	.daimg{
+		position: absolute;
+	}
+	</style>
+	<script src="../../js/function.js"></script>
+	<script>
+	$(function(){
+		var xiaobox=$(".xiaobox")[0]
+		var span=$("span")[0];
+		var zhezhao=$(".zhezhao")[0];
+		var dabox=$(".dabox")[0];
+		var daimg=$(".daimg")[0];
+		hover(xiaobox,function(){//鼠标移上去
+			span.style.display="block";
+			dabox.style.display="block";
+		},function(){//鼠标划出去
+			span.style.display="none";
+			dabox.style.display="none";
+		})
+		//zhezhao是为了防止事件流，如果用xiaobox，会引发事件流，鼠标闪动
+		
+		//zhezhao是兄弟节点，不会引发事件流
+		zhezhao.onmousemove=function(e){//鼠标移动事件
+			var ev=e||window.event;
+			var spanx=ev.offsetX-span.offsetWidth/2;//span的宽除以2--正中间--(鼠标位置) 
+			//span不能移动
+			var spany=ev.offsetY-span.offsetHeight/2;
+			if(spanx<=0){
+				spanx=0;
+			}
+			if(spany<=0){
+				spany=0
+			}
+			if(spanx>=(xiaobox.offsetWidth-span.offsetWidth)){
+				spanx=xiaobox.offsetWidth-span.offsetWidth;
+			}
+			if(spany>=(xiaobox.offsetHeight-span.offsetHeight)){
+				spany=xiaobox.offsetHeight-span.offsetHeight;
+			}
+			span.style.left=spanx+"px";//span重新的左边距---重新赋值之后才能移动
+			span.style.top=spany+"px";//span重新的上边距
+
+			var imgx=spanx/(xiaobox.offsetWidth-span.offsetWidth);//span的宽/(小盒子的宽-span自身的宽)
+			var imgy=spany/(xiaobox.offsetHeight-span.offsetHeight);//span的高/(小盒子的高-span自身的高)
+
+			//	-  相反方向
+			//	----减去自身宽高---
+			daimg.style.left=-imgx*(daimg.offsetWidth-dabox.offsetWidth)+"px";
+			daimg.style.top=-imgy*(daimg.offsetHeight-dabox.offsetHeight)+"px";
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="xiaobox">
+		<img class="xiaoimg" src="1.jpg" alt="">
+		<span></span>
+		<div class="zhezhao"></div>
+	</div>
+	<div class="dabox">
+		<img class="daimg" src="1.jpg" alt="">
+	</div>
+</body>
+</html>

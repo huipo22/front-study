@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打开</title>
+	<script>
+	window.onload=function(){
+		var opens=document.getElementById("open")
+		opens.onclick=function(){
+			window.open("newwindow.html","newname","width=300,height=200,left=120,top=120,toolbar=yes,menubar=yes,scrollbars=yes")
+		}
+	}
+	</script>
+</head>
+<body>
+	<h1>首页</h1>
+	<input type="submit" value="打开" id="open">
+</body>
+</html>

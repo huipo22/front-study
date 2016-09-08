@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>千分位处理</title>
+	<script type="text/javascript">
+	window.onload=function(){
+		// 方法四
+		function toThousands(num) {
+		    var num = (num || 0).toString(), result = '';
+		    // console.log(num)
+		    while (num.length > 3) {
+		        result = ',' + num.slice(-3) + result;
+		        // console.log(result)
+		        num = num.slice(0, num.length - 3);
+		        // console.log(num.length)
+		        console.log(num)
+		    }
+		    if (num) { result = num + result; }
+		    return result;
+		}
+		console.log(toThousands(23445343434))
+	}
+	</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript概述</title>
+	<!-- /*<script src="javas.txt"></script>*/ -->
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" language="javascript">
+     /* var a="zhangsan";
+      alert(a);*/
+
+      //输出工具
+      //1.弹出框
+      /*alert("<h1>王丽红</h1>");*/
+      //2.内容输出到body中,可以识别html标签
+      /*document.write("<h1>王丽红</h1>");*/
+      //3.输入框
+      /*var val=prompt("请输入用户名","zhangsan");
+      alert(val);*/
+      //4.控制台
+      /*console.log(123456789);*/
+
+      //javascript的引入
+      //1.嵌入式
+      //2.超链接或重定向的方式
+      //3.事件触发
+      //4.外部引入
+      /*var a=12;
+      */
+
+
+      //变量:它是存储数据的容器
+      // var  关键字
+      /*12345(字面量，直接量)"sdkajflas"*/
+     
+      //变量命名规范
+      //1.严格区分大小写
+/*       var a=12;
+       var A=30;
+       alert(a);
+       alert(A);*/
+       //2.必须是以字母、_、$开头，余下部分可以是数字，字母，—，$
+/*       var $_url1="www.baidu.com";
+       alert($_url1);*/
+       //3.不能用关键字和保留字来
+/*       var char=40;
+       alert(char);*/
+       //4.javascript的命名习惯
+        //驼峰命名  getElementById  getStyle
+        //首字母大写  Object    Name
+        //5.命名一定要有意义
+        //6.分号的使用(一条命令完成后加分号)
+        /*var name="zhangsan";var age=12;
+        alert(age);*/
+
+        //变量的创建   var
+        //1.先声明后赋值
+ /*       var c;
+        c="name";
+        alert(c);*/
+        //2.边声明边赋值
+/*        var c="name";
+        alert(c);*/
+        //3.一次声明多个变量，再赋值
+        /*var name,age,sex;
+        name="lisi";
+        age=20;
+        sex="boy";
+        alert(name+age+sex);*/
+        //4.一次声明多个变量同时赋值
+        /*var name="lisi",age=20,sex="boy";
+        alert(name+age+sex);*/
+        /*aa=20;
+        alert(aa);*/
+        //以全局变量存在，不推荐使用
+        //如何覆盖
+        /*var bb=100;
+        var bb;
+        alert(bb);*/
+        /*var b=undefined;
+        var a=undefined;
+        alert(a);*/
+
+	</script>
+	<style>
+       .one{
+       	width: 200px;
+       	height:200px;
+       	background:green;
+       	border-radius:50%;
+       	cursor:pointer;
+       }
+	</style>
+</head>
+<body>
+
+	<a href="javascript:alert("超链接方式");">百度</a>
+	<form action="javascript:alert('我是表单');" mothed="post">
+		<input type="text" value="123">
+		<input type="submit" value="提交">
+	</form>
+
+	<div class="one" onmouseover="alert(10);">设计院要在</div>
+</body>
+</html>
+
+<script>
+	 /*var a="第二个";
+     alert(a);*/
+</script>

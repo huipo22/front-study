@@ -1,0 +1,60 @@
+.bigbox{
+	width: 800px;
+	height: 400px;
+	margin: 0 auto;
+	/*border:1px solid red;*/
+	position: relative;
+}
+.imgbox{
+	width: 800px;
+	height: 400px;
+	position: relative;
+	/*border:1px solid red;*/
+}
+.img{
+	width: 800px;
+	height: 400px;
+	/*border:1px solid red;*/
+	position: absolute;
+	/* 每一个img都放在第一个位置，所以要固定定位 */
+	left: 0;
+	top: 0;
+}
+.one{
+	background: red;
+	z-index: 3;
+}
+.two{
+	background: yellow;
+}
+.three{
+	background: blue;
+}
+.four{
+	background: green;
+}
+
+.listbox{
+	width: 200px;
+	height: 30px;
+	position: absolute;
+	z-index: 4;
+	left: 300px;
+	bottom: 30px;
+	margin: 0 auto;
+	/*border: 1px solid red;*/
+}
+.list{
+	width: 28px;
+	height: 28px;
+	margin-left: 20px;
+	color: white;
+	background: #333;
+	border-radius: 50%;
+	float:left;
+	text-align: center;
+	line-height: 28px;
+}
+.list.one{
+	background: #ccc;
+}

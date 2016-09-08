@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运算符</title>
+	<script>
+      //一、算术运算符(+、-、*、/、%、++、--)
+      //12+5 表达式：操作数+运算符
+      //1.+   数值类型之间的运算时,和
+      //      字符串类型时,表示连接             
+      /*var a="10";
+      var b=20;
+      var c=a+b;*/
+      //alert(c);//1020
+      //2.%  取余数
+      //对整数求余，结果为整数
+      //对小数求余，结果为小数(一般不用)
+      /*var a=12;
+      var b=a%2;*/
+      //判断一段范围
+      /*if(a%2==0){
+      	alert("偶数");
+      }else{
+      	alert("奇数");
+      }*/
+      //alert(b);
+      //3.++ -- 自增   自减
+      //++a  先加后运算
+      //a++  先运算后加
+      //var a=20;
+      //c=a++;   a先运算，赋值给c(20),a再自加,(21)
+      //var c=a++;  //++a  a++
+      //alert(a);   //26   26
+      //alert(c);   //26   25
+      //var num=12;
+      //var sum=12+(num++)/2;
+      //alert(sum);   //18
+      //关系运算符  (>、<、==、>=、<=、===、!=、!==)
+      var a=2;
+      var b=true; //0  1
+      //alert(a>b);//false
+      //1. ==  ===区别 != !==
+      //==  != 比较的是值(等于)
+      //===  !== 比较的是值与类型(全等)
+      /*var str1="10";
+      var str2=10;
+      alert(str1===str2);*/
+      //2.比较规则
+         //1.两边都是字符串时，按字母的ASCII码比较
+         //2.一边是字符串，另一边是数值，比较时，先强制转换一下字符串的类型，如果这个字符串能转换成数值，如果转换不成时，结果false;
+         //3.两边都是数值的字符串时，比较数值的ASCII码值
+         //4.一边是数值，另一边是boolean时，会把false转换为0,ture转换为1,再进行比较
+         //5.null  0 ==  undefined 0  
+        //alert(null===undefined);
+        //var a="12";  //49 50
+        //var b="5";   //53
+        //alert(a>b);
+        //var a="1"; //49   1>10
+        //var b=10; //0
+        //alert(a>b);//true
+
+        //三、赋值运算符(=，+=，-=，*=，/=，%=)
+        //var num=10;
+        // num+=3;//num=num+3;  +=的运行效率高
+        //alert(num);
+        //四、逻辑运算符(&&  ||  !)  操作符转换为boolean  最终结果为操作符的值
+        /*1.&& 与 并且 (都有真时才为真
+        ,返回最后一个为真的值;
+        为假时返回第一个为假的值) */
+        //var a=false;
+        //var b=0;
+        //var c="";
+        //var d=a&&b&&c;  //true   false   false
+        //alert(d); //false && "ab"    "ab"
+        /*2.|| 或  或者(只要有一个为真，它就为真;
+           都为假时，返回最后一个为假的值;
+           都为真时，返回第一个为真的值
+        )
+   
+        */
+        /*var a="";
+        var b=0;
+        var c=false;
+        var d=a || b || c;
+        alert(d);*/
+        /*3.! 取反*/
+        var a=undefined;
+        //alert(!a);
+
+        /*  为假时
+          number      0
+          string      ""
+          boolean     false
+          null        false
+          undefined   false
+        */
+
+        //五、一元运算符
+/*typeof + - delete new ++ --
+– +
+• 正号、正数
+– delete
+• 删除对象的方法或是属性
+– new
+• 用来创建一个对象*/
+     //六、三元运算符
+     var aa=2>1?1:0;
+     if(2>1){
+     	alert(1);
+     }else{
+     	alert(0);
+     }
+     //alert(aa);
+     //七、特殊运算符   ,   ()
+     //逗号  用于声明多个变量
+     var name,age,sex,height;
+     //()  1.优先级  2.让函数运行
+     function a(val){
+     	alert(val);
+     }
+     a(1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+	.out{
+		width: 960px;
+		height: 480px;
+		border: 1px solid red;
+		margin: 40px auto;
+	}
+	.titlebox{
+		width: 960px;
+		height: 50px;
+		background: #ccc;
+	}
+	.titlebox li a{
+		width: 180px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		float: left;
+	}
+	.titlebox li>a:hover{
+		background: red;
+		color: #fff;
+	}
+	.conbox{
+		width: 960px;
+		height: 430px;
+		overflow: hidden;
+	}
+	.conbox li{
+		width: 960px;
+		height: 430px;
+		float: left;
+		text-align: center;
+		line-height: 430px;
+		font-size: 40px;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var titlebox=$(".titlebox")[0];
+		var lis=$("li",titlebox);
+		var conbox=$(".conbox")[0];
+		var con=$("li",conbox);
+		for(var i=0;i<lis.length;i++){
+			lis[i].index=i;
+			lis[i].onclick=function(){
+				for(var j=0;j<con.length;j++){
+					con[j].style.display="none";
+				}
+				con[this.index].style.display="block";
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="out">
+		<ul class="titlebox">
+			<li><a href="javascript:;">新闻</a></li>
+			<li><a href="javascript:;">国际</a></li>
+			<li><a href="javascript:;">国内</a></li>
+			<li><a href="javascript:;">国外</a></li>
+			<li><a href="javascript:;">关于</a></li>
+		</ul>
+		<ul class="conbox">
+			<li>oneF</li>
+			<li>twoF</li>
+			<li>threeF</li>
+			<li>fourF</li>
+			<li>fiveF</li>
+		</ul>
+	</div>
+</body>
+</html>

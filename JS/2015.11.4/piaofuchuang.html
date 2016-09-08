@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>漂浮窗</title>
+	<style>
+	body{
+		margin: 0;
+	}
+	#box{
+		display: block;
+		width: 100px;
+		height: 150px;
+		background: red;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	.close{
+		width: 14px;
+		height: 14px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		border: 1px solid green;
+		text-align: center;
+		line-height: 14px;
+		color: white;	
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	// $(function(time,speed){
+	// 	var box=$("#box");
+	// 	var close=$(".close")[0];
+	// 	var t=setInterval(move,time);
+	// 	var speedX=speed;//x轴 速度x
+	// 	var speedY=speed;//y轴 速度y
+	// 	var cw=document.documentElement.clientWidth;//浏览器的宽度
+	// 	var ch=document.documentElement.clientHeight;//浏览器的高度
+	// 	var sw=box.offsetWidth;//自身的宽度
+	// 	var sh=box.offsetHeight;//自身的高度
+
+	// 	/*window.onload 文档加载完成事件
+	// 	window.onscroll 文档滚动条事件
+	// 	window.onresize 窗口改变事件*/
+
+	// 	window.onresize=function(){
+	// 		cw=document.documentElement.clientWidth;//浏览器的宽度
+	// 		ch=document.documentElement.clientHeight;//浏览器的高度
+	// 	}
+	// 	function move(){
+	// 		var selfleft=box.offsetLeft;//自身的左边距
+	// 		var selftop=box.offsetTop;//自身的上边距
+	// 		var newleft=selfleft+speedX;//加速之后的左边距
+	// 		var newtop=selftop+speedY;//加速之后的上边距
+	// 		//alert(newtop);
+
+	// 		//边界
+	// 		//cw 浏览器的宽  ch 浏览器的高
+	// 		//sw 自身的宽  sh 自身的高
+	// 		//X    0------(cw-sw)
+	// 		//Y    0------(ch-sh)
+
+	// 		if(newtop>=(ch-sh)){//下
+	// 			newtop=ch-sh;//上边距的最大值
+	// 			speedY*=-1;//变成负值
+	// 		}
+	// 		if(newleft>=(cw-sw)){//右
+	// 			newleft=cw-sw;//左边距的最大值
+	// 			speedX*=-1;//变成负值
+	// 		}
+	// 		if(newtop<=0){//上
+	// 			newtop=0;
+	// 			speedY*=-1;
+	// 		}
+	// 		if(newleft<=0){//左
+	// 			newleft=0;
+	// 			speedX*=-1;
+	// 		}
+	// 		box.style.left=newleft+"px";
+	// 		box.style.top=newtop+"px";
+	// 	}
+	// 	box.onmouseover=function(){
+	// 		clearInterval(t);
+	// 	}
+	// 	box.onmouseout=function(){
+	// 		t=setInterval(move,time)
+	// 	}
+	// 	close.onclick=function(){
+	// 		box.style.display="none"
+	// 	}
+	// })
+	// $(function(){
+	// 	var box=$("#box");
+	// 	var close=$(".close")[0];
+	// 	floatwindow(box,close,5,5);
+	// })
+
+
+	$(function(){
+		var box=$("#box");
+		var close=$(".close")[0];
+		var t=setInterval(move,60);
+		var speedX=5;
+		var speedY=5;
+		var cw=document.documentElement.clientWidth;
+		var ch=document.documentElement.clientHeight;
+		var sw=box.offsetWidth;
+		var sh=box.offsetHeight;
+		window.onresize=function(){
+			cw=document.documentElement.clientWidth;
+			ch=document.documentElement.clientHeight;
+		}
+		function move(){
+			var selfleft=box.offsetLeft;
+			var selftop=box.offsetTop;
+			var newleft=selfleft+speedX;
+			var newtop=selftop+speedY;
+			if(newtop>=(ch-sh)){
+				newtop=ch-sh;
+				speedY*=-1;
+			}
+			if(newleft>=(cw-sw)){
+				newleft=cw-sw;
+				speedX*=-1;
+			}
+			if(newtop<=0){
+				newtop=0;
+				speedY*=-1;
+			}
+			if(newleft<=0){
+				newleft=0;
+				speedX*=-1;
+			}
+			box.style.left=newleft+"px";
+			box.style.top=newtop+"px";
+		}
+		box.onmouseover=function(){
+			clearInterval(t);
+		}
+		box.onmouseout=function(){
+			t=setInterval(move,60);
+		}
+		close.onclick=function(){
+			box.style.display="none"
+		}
+	})
+	</script>
+</head>
+<body>
+	<a href="" id="box">
+		<div class="close">X</div>
+	</a>
+</body>
+</html>

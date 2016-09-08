@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		position: relative;
+		/*border: 2px solid red;*/
+	}
+	.banner,.tab{
+		width: 800px;
+		height: 480px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		background: yellow;
+	}
+	.floor{
+		width: 1000px;
+		height: 480px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		border: 1px solid red;
+	}
+	img{
+		width: 200px;
+	}
+	</style>
+	<script src="../../js/function.js"></script>
+	<script>
+	$(function(){
+		var floor=$(".floor");
+		var ch=document.documentElement.clientHeight;//获取浏览器的高度
+		window.onscroll=function(){
+			var obj=document.documentElement.scrollTop?document.documentElement:document.body;//三元表达式		为真是document.documentElement		为假是document.body
+			document.title=obj.scrollTop;
+			for(var i=0;i<floor.length;i++){
+				if(floor[i].offsetTop<obj.scrollTop+ch){//小于的时候就要加载，否则就迟了
+					var imgs=$("img",floor[i]);//从每一个楼层里获取	img
+					console.log(floor[i].offsetTop)			//1020		//1022
+					console.log(obj.scrollTop+ch)
+					for(var j=0;j<imgs.length;j++){
+						imgs[j].src=imgs[j].getAttribute("aa");
+					}
+				}
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="banner"></div>
+	<div class="tab"></div>
+	<div class="floor">
+		<img src="" alt="" aa="img/1.jpg">
+		<img src="" alt="" aa="img/2.jpg">
+		<img src="" alt="" aa="img/3.jpg">
+		<img src="" alt="" aa="img/4.jpg">
+		<img src="" alt="" aa="img/5.jpg">
+	</div>
+	<div class="floor">
+		<img src="" alt="" aa="img/1.jpg">
+		<img src="" alt="" aa="img/2.jpg">
+		<img src="" alt="" aa="img/3.jpg">
+		<img src="" alt="" aa="img/4.jpg">
+		<img src="" alt="" aa="img/5.jpg">
+	</div>
+	<div class="floor">
+		<img src="" alt="" aa="img/1.jpg">
+		<img src="" alt="" aa="img/2.jpg">
+		<img src="" alt="" aa="img/3.jpg">
+		<img src="" alt="" aa="img/4.jpg">
+		<img src="" alt="" aa="img/5.jpg">
+	</div>
+	<div class="floor">
+		<img src="" alt="" aa="img/1.jpg">
+		<img src="" alt="" aa="img/2.jpg">
+		<img src="" alt="" aa="img/3.jpg">
+		<img src="" alt="" aa="img/4.jpg">
+		<img src="" alt="" aa="img/5.jpg">
+	</div>
+	<div class="floor">
+		<img src="" alt="" aa="img/1.jpg">
+		<img src="" alt="" aa="img/2.jpg">
+		<img src="" alt="" aa="img/3.jpg">
+		<img src="" alt="" aa="img/4.jpg">
+		<img src="" alt="" aa="img/5.jpg">
+	</div>
+</body>
+</html>

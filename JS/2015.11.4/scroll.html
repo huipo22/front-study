@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动条</title>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		window.onscroll=function(){
+			//document.write(document.documentElement.scrollTop);
+			//document.write(document.body.scrollTop);
+			//兼容问题
+			//FF:document.documentElement.scrollTop
+			//Chrome:document.body.scrollTop
+			var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+			alert(obj.scrollTop)
+
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="box" style="height:3000px"></div>
+</body>
+</html>

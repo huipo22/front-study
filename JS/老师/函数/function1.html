@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数的创建与调用</title>
+	<script>
+    //1.function
+    /*function a(){
+    	alert(1);
+    }*/
+    //a();
+    //2.字面量
+
+     /* var aa=function(){
+      	alert("aa");
+      }
+      aa();*/
+    //12  
+    /*(function(){
+    	alert(1);
+    }())*/
+    //a();
+    //3.new
+    /*var a=new Function("alert(1)");
+    a();*/
+
+    
+    //文档加载完成事件
+    /*window.onload=function(){
+    	//通过类名来获取html元素
+    	var div=document.getElementsByClassName("box")[0];
+    	//单击事件
+    	div.onclick=function aa(){
+    	    alert("这是一个div");
+        }
+    }*/
+    
+
+
+    
+    
+    /*var bb=function(){
+    	alert("这是第二个函数");
+    }*/
+    
+
+    function bb(){
+    	alert("这是第一个函数");
+    }
+    
+    //bb();
+
+    cc();
+	</script>
+	<style>
+     .box{
+     	width: 200px;
+     	height: 200px;
+     	background: red;
+     }
+	</style>
+</head>
+<body>
+	<script>
+        function cc(){
+      	    alert("这是第三个函数");
+        }
+	</script>
+	<div class="box"></div>
+</body>
+</html>

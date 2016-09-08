@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚轮事件</title>
+	<script src="../js/functionKu.js"></script>
+	<script>
+	$(function(){
+		var box=$(".box")[0]
+		//解决鼠标滚轮事件的兼容函数
+		//mouseWheel(obj,upfun,downfun)
+/*		if(document.attachEvent){
+			document.attachEvent("onmousewheel",scrollFn); //IE、 opera
+		}else if(document.addEventListener){
+			document.addEventListener("mousewheel",scrollFn,false);
+		//chrome,safari -webkit
+			document.addEventListener("DOMMouseScroll",scrollFn,false);
+		//firefox -moz-
+		}
+
+		function scrollFn(e){
+			var ev=e || window.event;
+			var aa=ev.detail;//FF 滚轮往上：-3	滚轮往下：+3
+			// var bb=ev.wheelDelta;//IE 滚轮往上：+120	滚轮往下：-120
+			// box.innerHTML=bb
+			// box.innerHTML=bb
+			// alert(aa);
+		}
+
+		function mouseWheel(obj,upfun,downfun){
+			//添加滚轮事件的兼容问题
+			if(obj.attachEvent){
+				obj.attachEvent("onmousewheel",scrollFn); //IE、 opera
+			}else if(obj.addEventListener){
+				obj.addEventListener("mousewheel",scrollFn,false);//chrome,safari -webkit
+				obj.addEventListener("DOMMouseScroll",scrollFn,false);//firefox -moz-
+			}
+			function scrollFn(e){
+				var ev=e || window.event;
+				if(ev.detail==-3 || ev.wheelDelta==120){//往上
+					if(upfun){//往上滑的事件存在
+						upfun();
+					}
+				}
+				if(ev.detail==3 || ev.wheelDelta==-120){//往下
+					if(downfun){//往下滑的事件存在
+						downfun();
+					}
+				}
+
+				if (ev.preventDefault){
+					ev.preventDefault(); //阻止默认浏览器动作(W3C)
+				}	
+				else{
+					ev.returnValue = false;//IE中阻止函数器默认动作的方式
+				}
+					
+			}
+
+		}*/
+		mouseWheel(box,function(){
+			box.innerHTML="上"
+		},function(){
+			box.innerHTML="下"
+		})
+	})
+	</script>
+</head>
+<body style="height:3000px;">
+	<div class="box" style="width:100px;height:200px;border:1px solid red"></div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+	.box{
+		width: 960px;
+		height: 480px;
+		border: 1px solid red;
+		margin: 40px auto;
+		position: relative;
+		overflow: hidden;
+	}
+	.imgs{
+		width: 4800px;
+		/*  必须给父元素设置宽  宽=img[0].offsetWidth*num  */
+		height: 480px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		/*必须加定位，否则没有动画效果*/
+	}
+	.img{
+		width: 960px;
+		height: 480px;
+		float: left;
+		display: inline-block;
+	}
+	.img.one{
+		background: red;
+		float: left;
+	}
+	.img.two{
+		background: yellow;
+		float: left;
+	}
+	.img.three{
+		background: blue;
+	}
+	.img.four{
+		background: green;
+	}
+	.img.five{
+		background: pink;
+	}
+
+	/* left right 需要定位+调层级*/
+	.right{
+		width: 50px;
+		height: 50px;
+		background: #000;
+		opacity: 0.7;
+		font-size: 40px;
+		text-align: center;
+		line-height: 50px;
+		color: #fff;
+		float: right;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+	.left{
+		width: 50px;
+		height: 50px;
+		background: #000;
+		opacity: 0.7;
+		font-size: 40px;
+		text-align: center;
+		line-height: 50px;
+		color: #fff;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		float: left;
+		z-index: 4;
+	}
+	
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var imgs=$(".imgs")[0];
+		var img=$(".img",imgs);
+		var left=$(".left")[0];
+		var right=$(".right")[0];
+		var t=setInterval(moveL,2000);
+		var w=img[0].offsetWidth;
+		function moveL(){
+			animate(imgs,{left:-w},400,Tween.Linear,function(){
+				var first=getFirst(imgs);
+				imgs.appendChild(first);//将first插入到imgs里子节点的最后
+				imgs.style.left=0;
+			})
+		}
+		function moveR(){
+			var last=getLast(imgs);//获取最后子节点
+			imgs.insertBefore(last,getFirst(imgs));//将最后子节点插入到第一个子节点之后
+			imgs.style.left=-w+"px";//后面需要加单位px
+			animate(imgs,{left:0},400,Tween.Linear)
+		}
+		left.onmouseover=right.onmouseover=function(){
+			clearInterval(t);
+		}
+		left.onmouseout=right.onmouseout=function(){
+			t=setInterval(moveL,2000);
+		}
+		left.onclick=function(){
+			moveL();
+		}
+		right.onclick=function(){
+			moveR()
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="box">
+		<a href="javascript:;" class="left">&lt;</a>
+		<div class="imgs">
+			<div class="img one"></div>
+			<div class="img two"></div>
+			<div class="img three"></div>
+			<div class="img four"></div>
+			<div class="img five"></div>
+		</div>
+		<a href="javascript:;" class="right">&gt;</a>
+	</div>
+</body>
+</html>

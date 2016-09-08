@@ -1,0 +1,179 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>error</title>
+	<style>
+	body{
+		margin: 0;
+	}
+	.box{
+		width:400px;
+		height: 300px;
+		border: 1px solid black;
+		font-size: 16px;
+		position: absolute;
+	}
+	.top{
+		width: 100%;
+		height: 100px;n
+		background: pink;
+		font-weight: bold;
+		text-align: center;
+		line-height: 100px;
+	}
+	span{
+		color:red;
+		font-weight: bold;
+	}
+	.xia{
+		width:100%;
+		height: 250px;
+		text-align: center;
+		line-height: 200px;
+		position: relative;
+	}
+	.guanbi{
+		position: absolute;
+		left: 38%;
+		bottom: 60px;
+		line-height: 50px;
+		width: 100px;
+		border: 1px solid #ccc;
+		text-align: center; 
+		cursor: pointer;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var widths=document.documentElement.clientWidth;
+		var heights=document.documentElement.clientHeight;
+		var lefts=(widths-400)/2;
+		var tops=(heights-300)/2;
+		var box=document.getElementsByClassName("box")[0];
+		box.style.left=lefts+"px";
+		box.style.top=tops+"px";
+		var guanbi=document.getElementsByClassName("guanbi")[0]
+		guanbi.onclick=function(){
+			location.href="login.html";
+		}
+		var num=5;
+		var span=document.getElementsByClassName("time")[0]
+		setInterval(function(){			
+			if(num==0){
+				location.href="login.html";
+			}
+			span.innerHTML=num;
+			num--;
+		},1000)
+	}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="top">ERROR!</div>
+		<div class="xia">
+			<span class="time">5</span>秒后关闭
+			<div class="guanbi">关闭</div>
+		</div>
+		
+	</div>
+</body>
+</html> -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>error</title>
+	<style>
+	.box{
+		width: 400px;
+		height: 300px;
+		border: 1px solid black;
+		position: absolute;
+	}
+	.top{
+		width: 100%;
+		height: 50px;
+		background:pink;
+		text-align: center;
+		line-height: 50px;
+	}
+	.xia{
+		width: 100%;
+		height:250px;
+		text-align: center;
+		line-height: 200px;
+		position: relative;
+	}
+	.guanbi{
+		position: absolute;
+		width: 100px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		background: #ccc;
+		bottom: 20px;
+		left:38%;
+	}
+	</style>
+	<script>
+/*	window.onload=function(){
+		var w=document.documentElement.clientWidth;
+		var h=document.documentElement.clientHeight;
+		var lefts=(w-400)/2;
+		var tops=(h-300)/2;
+		var box=document.getElementsByClassName("box")[0];
+		box.style.left=lefts+"px";
+		box.style.top=tops+"px";
+		var guanbi=document.getElementsByClassName("guanbi")[0];
+		guanbi.onclick=function(){
+			location.href="login.html";
+		}
+		var t=document.getElementsByClassName("time")[0];
+		var num=5;
+		setInterval(function(){
+			if(num==0){
+				location.href="login.html";
+			}
+			t.innerHTML=num;
+			num--;
+		},1000);
+	}
+	*/
+	window.onload=function(){
+		var w=document.documentElement.clientWidth;
+		var h=document.documentElement.clientHeight;
+		var lefts=(w-400)/2;
+		var tops=(h-300)/2;
+		var box=document.getElementsByClassName("box")[0];
+		box.style.left=lefts+"px";
+		box.style.top=tops+"px";
+		var t=document.getElementsByClassName("time")[0];
+		var num=5
+		setInterval(function(){
+			if(num==0){
+				location.href="login.html";
+			}
+			t.innerHTML=num;
+			num--;
+		},1000)
+		var guanbi=document.getElementsByClassName("guanbi")[0];
+		guanbi.onclick=function(){
+			location.href="login.html";
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="top">ERROR!</div>
+		<div class="xia">
+			<span class="time">5</span>秒后关闭
+			<div class="guanbi">关闭</div>
+		</div>
+		
+	</div>
+</body>
+</html>

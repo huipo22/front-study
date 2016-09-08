@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>键盘对象</title>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var box=$(".box")[0]
+		document.onkeydown=function(e){
+			var ev=e||window.event;
+			// alert(ev.keyCode);
+			alert(ev.type);
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="box" style="width:100px;height:100px;border:1px solid red">hello</div>
+</body>
+</html>

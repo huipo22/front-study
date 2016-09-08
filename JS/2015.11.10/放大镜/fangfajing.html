@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+	.xiaobox{
+		width: 240px;
+		height: 170px;
+		border: 1px solid red;
+		float: left;
+		margin-right: 30px;
+		cursor: pointer;
+	}
+	.xiaoimg{
+		width: 240px;
+		height: 170px;
+	}
+	.dabox{
+		width:320px;
+		height: 225px;
+		border: 1px solid red;
+		position: relative;
+		display: none;
+		float: left;
+		overflow: hidden;
+	}
+	.daimg{
+		position: absolute;
+	}
+	</style>
+	<script src="../../js/function.js"></script>
+	<script>
+	$(function(){
+		var xiaobox=$(".xiaobox")[0];
+		var dabox=$(".dabox")[0];
+		var daimg=$(".daimg")[0];
+		hover(xiaobox,function(){//hover事件 
+			dabox.style.display="block";//划上去
+		},function(){
+			dabox.style.display="none";//滑下来
+		})
+
+		xiaobox.onmousemove=function(e){//移动事件
+			var ev=e||window.event;
+			// console.log(ev.offsetX)
+			var imgx=ev.offsetX/xiaobox.offsetWidth;//比例x轴
+			var imgy=ev.offsetY/xiaobox.offsetHeight;//比例y轴
+			daimg.style.left=-imgx*(daimg.offsetWidth-dabox.offsetWidth)+"px";// daimg左边距样式	(daimg的宽-dabox的宽)
+			daimg.style.top=-imgy*(daimg.offsetHeight-dabox.offsetHeight)+"px";//daimg上边距样式	(daimg的高-dabox的高)
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="xiaobox">
+		<img class="xiaoimg" src="1.jpg" alt="">
+	</div>
+	<div class="dabox">
+		<img class="daimg" src="1.jpg" alt="">
+	</div>
+</body>
+</html>

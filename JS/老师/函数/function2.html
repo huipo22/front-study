@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数的参数与返回值</title>
+	<script>
+    	//*的数量   当前行数*2-1
+    	//空格的数量   总行数-当前行数
+    function ta(num){//形参
+       for(var i=1;i<=num;i++){
+       	   for(var j=1;j<=num-i;j++){
+       	   	   document.write("&nbsp;");
+       	   }
+       	   for(var k=1;k<=i*2-1;k++){
+       	   	   document.write("*");
+       	   }
+       	   document.write("<br>");
+       }
+    }
+    //ta(20);//实参
+    //ta(7);
+     
+     //number   string  boolean  null(object) undefined
+
+     /*function aa(a){
+        alert(typeof a);
+     }
+     aa(undefined);*/
+    //只能检测初始类型
+     function checkType(a){
+         if(typeof a=="number"){
+         	alert("您输入的数据为数值型");
+         }else if(typeof a=="string"){
+         	alert("您输入的数据为字符串型");
+         }else if(typeof a=="undefined"){
+         	alert("您输入的数据为undefined型");
+         }else if(typeof a=="object"){
+         	alert("您输入的数据为null型");
+         }else if(typeof a=="boolean"){
+         	alert("您输入的数据为布尔型");
+         }else{
+         	alert("未知");
+         }
+     }
+     //checkType(true);
+
+
+
+     function aa(a,b){
+     	//alert(a);
+     	//alert(b);
+     	//alert(arguments.length);
+     	//alert(arguments.callee);
+     	alert(arguments[arguments.length-1]);//获取最后一个
+     }
+    // aa(3,"123",true,7,8,9,"ab","db");
+    /*function bb(a,b){
+    	alert(a);
+    	alert(b);
+    }*/
+
+    //bb(2,3,4);
+
+
+    function aa(a){
+    	if(a>0){
+    		return a;
+    	}
+    	if(a<0){    		
+    		return --a;
+    	}
+    }
+    //alert(aa(-2));
+
+
+    function bb(num1,num2){
+    	return num1+num2;
+    }
+    //alert(bb(12,5));   
+    //undefined
+
+    function cc(a,b,c){
+    	return a,b,c;//c   
+    	//逗号，从左到右进行赋值的，最终结果只能是最后一个
+    }
+    alert(cc(4,5,6));
+
+
+    var a;
+    a=4;
+    a=5;
+    a=6;
+    alert(a);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

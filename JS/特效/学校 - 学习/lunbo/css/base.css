@@ -1,0 +1,46 @@
+body{
+	font-family: "微软雅黑";
+	cursor: pointer;
+}
+.chuangkou{
+	width:250px;
+	height:250px;
+	border:1px solid green;
+	margin:0 auto;
+	overflow:hidden;
+}
+#chang{
+	width:1004px;
+	height:180px;
+	/*border:1px solid red;*/
+	margin-top:25px;
+	-webkit-transition:all 0.6s ease;
+}
+.item{
+	font-size:34px;
+	line-height:180px;
+	text-align:center;
+	width:250px;
+	heifht:180px;
+	border:1px solid blue;
+	float:left;
+	margin-left:-1px;
+}
+#biaoshi{
+	width:180px;
+	height: 30px;
+	/*border: 1px solid black;*/
+	margin: 6px auto;
+}
+.b-item{
+	width: 20px;
+	height: 20px;
+	/*border: 1px solid red;*/
+	border-radius: 50%;
+	float: left;
+	margin:6px 10px;
+	text-align: center;;
+	line-height: 20px;
+	color:white;
+	background: black;
+}

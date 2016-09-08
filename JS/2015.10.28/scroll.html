@@ -1,0 +1,104 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动条</title>
+	<style>
+	body{
+		height: 3000px;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var t=setInterval(gundong,100)
+			 function gundong(){//自动让滚动条滚动
+				scrollBy(0,50);
+			}
+			var body=document.getElementById("body")
+			//获取body来实现滚动条的动与止
+			var flag=true;//定义一个变量来控制滚动条的动与止，为真时滚动条滚动，为假时滚动条停止
+			body.onclick=function(){
+				if(flag){
+					clearInterval(t);
+					flag=false;//为下一次做准备
+				}else{
+					t=setInterval(gundong,100)
+					flag=true;
+				}
+			}
+		}
+	</script>
+</head>
+<body id="body">
+	
+</body>
+</html> -->
+<!-- <!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动</title>
+	<style>
+	body{
+		height: 3000px;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var t=setInterval(gundong,100);
+		function gundong(){
+			scrollBy(0,50);
+		}
+		var body=document.getElementById("body")
+		var flag=true;
+		body.onclick=function(){
+			if(flag){
+				clearInterval(t);
+				flag=false;
+			}else{
+				t=setInterval(gundong,100);
+				flag=true;
+			}
+		}
+	}
+	</script>
+</head>
+<body id="body"> 
+	
+</body>
+</html> -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动</title>
+	<style>
+	body{
+		height: 3000px;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var t=setInterval(gundong,100);
+		function gundong(){
+			scrollBy(0,10);
+		}
+		var body=document.getElementById("body");
+		var flag=true
+		body.onclick=function(){
+			if(flag){
+				clearInterval(t);
+				flag=false;
+			}else{
+				t=setInterval(gundong,100);
+				flag=true;
+			}
+			
+		}
+	}
+	</script>
+</head>
+<body id="body">
+	
+</body>
+</html>

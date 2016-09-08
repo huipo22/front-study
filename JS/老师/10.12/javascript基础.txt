@@ -1,0 +1,188 @@
+一、javascript能做什么
+  1.数据验证（javascript将表单的验证放在提交服务器之前进行验证，提高效率，增强用户的体验）
+  2.将动态的内容写入到网页当中
+  3.可以对事件做出响应。
+  4.可以读写html中的内容。
+  5.可以检测浏览器（响应式）
+  6.可以创建cookies（它可以存储一些用户信息，比如用户名和密码）
+  7.模拟动画
+  ......
+二、javascript是什么
+   基于对象和事件驱动的松散型的解释性语言
+   1.基于对象：
+    c  面向过程
+   java  面向对象
+   javascript它是面向对象开发的一种语言(在对象的基础上开发一种语言)
+   2.事件驱动
+   3.松散型（弱类型）
+    java,c float a=1.3;强制型
+    javascript  var a="zhangsan";
+   4.解释性
+    由浏览器来编辑运行（编辑，编译，运行）
+
+三、javascript的由来
+   Nombas 和 ScriptEase 1992
+   Netscape\sun和javascript 1995
+   微软和Jscript
+   1997 年，JavaScript 1.1 作为一个草案提交给欧洲计算机制造商协会
+（ECMA）。
+四、javascript的组成
+   1.ECMAscript(基础语言，javascript的规范)
+   2.BOM:  browser(浏览器) object(对象) model(模型)
+   3.DOM:  document(文档)  object model
+五、工具
+  sublime
+  FF\Chrome\IE
+  firbug\审查元素 
+六、输出工具
+    1.弹出框
+      alert("<h1>王丽红</h1>");
+    2.内容输出到body中,可以识别html标签
+      document.write("<h1>王丽红</h1>");
+    3.输入框
+      var val=prompt("请输入用户名","zhangsan");
+      alert(val);
+    4.控制台
+      console.log(123456789); 
+七、javascript的引入方式(调用) 
+   1.嵌入式
+   <script type="text/javascript" language="javascript"></script>
+****************************************
+    它可以出现多次，并且可以放在html页面中任何位置
+    如果有多个<script>标签对，它们还是一个整体，相互联系，相互影响的
+****************************************
+   2.超链接或重定向的方式
+    超链接的格式:
+        <a href="javascript:alert("超链接方式");">百度</a>
+    重定向的格式：
+        <form action="javascript:alert('我是表单');" mothed="post">
+		<input type="text" value="123">
+		<input type="submit" value="提交">
+	</form>
+    3.事件触发
+    <div class="one" onmouseover="alert(10);">设计院要在</div>
+    4.外部引入
+    <script src="javas.js"></script>
+************************************************
+     在html页面中使用<script>标签对时，中间不能有任何代码出现
+     在js页面，不能出现<script>标签对
+************************************************
+八、注释
+  行内注释  //
+  块注释   /*   
+
+           */
+
+
+九、变量:它是存储数据的容器
+     var  关键字
+      /*12345(字面量，直接量)"sdkajflas"*/
+     
+      //变量命名规范
+      //1.严格区分大小写
+/*       var a=12;
+       var A=30;
+       alert(a);
+       alert(A);*/
+       //2.必须是以字母、_、$开头，余下部分可以是数字，字母，—，$
+/*       var $_url1="www.baidu.com";
+       alert($_url1);*/
+       //3.不能用关键字和保留字来
+/*       var char=40;
+       alert(char);*/
+       //4.javascript的命名习惯
+        //驼峰命名  getElementById  getStyle
+        //首字母大写  Object    Name
+        //5.命名一定要有意义
+        //6.分号的使用(一条命令完成后加分号)
+        /*var name="zhangsan";var age=12;
+        alert(age);*/
+十、变量的创建  var关键字
+        //1.先声明后赋值
+ /*       var c;
+        c="name";
+        alert(c);*/
+        //2.边声明边赋值
+/*        var c="name";
+        alert(c);*/
+        //3.一次声明多个变量，再赋值
+        /*var name,age,sex;
+        name="lisi";
+        age=20;
+        sex="boy";
+        alert(name+age+sex);*/
+        //4.一次声明多个变量同时赋值
+        /*var name="lisi",age=20,sex="boy";
+        alert(name+age+sex);*/
+******************************************
+注意：
+        /*aa=20;
+        alert(aa);*/
+        //以全局变量存在，不推荐使用
+        //如何覆盖
+        var bb=100;
+        var bb;
+        alert(bb);
+******************************************
+十一、1.初始类型
+     //1.undefined
+     //未定义的
+     //typeof  检测数据类型的,一元运算符,它的检测结果是字符串类型
+     /*var aa=undefined;
+     alert(typeof typeof aa);*/
+     //2.number  整数与小数，特殊的数值
+     var num=20.5;  //十进制
+     var num1=parseInt(1001,2);    //二进制
+     var num2=parseInt(1001,8);    //八进制   513
+     //1001=1*80+0+0+1*83=513        513/8
+     var num3=01001;        //前导0 数字的0  八进制
+     var num4=0xff;         //十六进制
+     var num5=1e+11;        //科学计数法   1000000000000  1*10 11
+     var num6=Number.MAX_VALUE;   //最大数
+     var num7=Number.MIN_VALUE;   //最小数
+     //alert(num7);      
+     //alert(typeof num);
+     //3.string
+     //""\''  字符串
+     //\n   换行    转义字符(让普通的字符有特殊的意义)
+     //\t   制表符
+     //\b   空格
+     //\"   \'   \\
+
+     var str="www.\"baidu\".com";
+     //如何使用""和''
+     //嵌套使用，成对出现的，注意顺序（先进后出） 
+     var str1="我是一个'自豪的'中国人";
+     //alert(str1);
+     /*alert(typeof str1);*/
+
+     //4.boolean 布尔值  true真  false假  用于判断
+     var  boo=false;
+     //alert(boo);
+     //alert(typeof boo);
+     //5.null   空
+     //什么都没有，占位符,是给对象占位置的
+     //作用:1。初始化对象(是给对象占位置的)2.清空对象
+
+     /*var person=new Object;
+     person.name="貂蝉";
+     person.sex="women";
+     person.height="168cm";
+     person.say=function (){
+     	alert("会说话 ");
+     }
+     person=null;
+     person.say();*/
+     var obj=null;
+     alert(typeof obj);
+     //2.引用类型
+     //object   函数   数组
+
+ 
+      类型             值(取出来的)            typeof的结果
+      undefined       undefined                 "undefined"
+      number          数值(十进制)               "number"
+      string           字符串                    "string"
+      boolean          true/false                "boolean"
+      null              null                     "object"
+  

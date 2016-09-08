@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二</title>
+	<script>
+	window.onload=function(){
+			
+			var shang=document.getElementById("shang")
+			shang.onclick=function(){
+				history.go(-1)
+				//history.back()
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>第二个页面</h1>
+	<a href="history1.html">第一个页面</a>
+	<input type="button" value="上一个" id="shang">
+</body>
+</html>

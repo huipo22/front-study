@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	var title=document.title;
+	document.addEventListener?document.addEventListener('visibilitychange',content):document.attachEvent('onvisibilitychange',content);
+	function content() {	
+		var str='你快回来，我一人忽悠不来！';
+  		document.title = document.hidden ? str:title;
+	}
+	
+	</script>
+</head>
+<body>
+	<h3>小玩意</h3>
+	<p>页面处在可见状态的时候没有任何异常，但是当你把页面切换到其他TAB页，或者最小化到任务栏的时候浏览器title就会写上“你快回来，我一人忽悠不来！”</p>
+</body>
+</html>

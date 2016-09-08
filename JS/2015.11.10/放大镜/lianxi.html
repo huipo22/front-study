@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+	.xiaobox{
+		width: 120px;
+		height: 85 px;
+		/*border: 1px solid red;*/
+		margin-right: 10px;
+		cursor: pointer;
+		float: left;
+	}
+	.xiaoimg{
+		width: 120px;
+		height: 85px;
+	}
+	.dabox{
+		width: 240px;
+		height: 170px;
+		border: 1px solid red;
+		position: relative;
+		display: none;
+		float: left;
+		overflow: hidden;
+	}
+	.daimg{
+		position: absolute;
+	}
+	</style>
+	<script src="../../js/function.js"></script>
+	<script>
+/*	$(function(){
+		var xiaobox=$(".xiaobox")[0];
+		var dabox=$(".dabox")[0];
+		var daimg=$(".daimg")[0];
+
+		hover(xiaobox,function(){
+			dabox.style.display="block";
+		},function(){
+			dabox.style.display="none ";
+		})
+
+		xiaobox.onmousemove=function(e){
+			var ev=e||window.event;
+			var imgx=ev.offsetX/xiaobox.offsetWidth;
+			var imgy=ev.offsetY/xiaobox.offsetHeight;
+			daimg.style.left=-imgx*(daimg.offsetWidth-dabox.offsetWidth)+"px";
+			daimg.style.top=-imgy*(daimg.offsetHeight-dabox.offsetHeight)+"px";
+		}
+	})*/
+	$(function(){
+		var xiaobox=$(".xiaobox")[0];
+		var dabox=$(".dabox")[0];
+		var daimg=$(".daimg")[0];
+		hover(xiaobox,function(){
+			dabox.style.display="block"
+		},function(){
+			dabox.style.display="none"
+		})
+		xiaobox.onmousemove=function(e){
+			var ev=e||window.event;	
+			var imgx=ev.offsetX/xiaobox.offsetWidth;
+			var imgy=ev.offsetY/xiaobox.offsetHeight;
+			daimg.style.left=-imgx*(daimg.offsetWidth-dabox.offsetWidth)+"px";
+			daimg.style.top=-imgy*(daimg.offsetHeight-dabox.offsetHeight)+"px";
+		}
+	})
+
+	</script>
+</head>
+<body>
+	<div class="xiaobox">
+		<img src="1.jpg" alt="" class="xiaoimg">
+	</div>
+	<div class="dabox">
+		<img src="1.jpg" alt="" class="daimg">
+	</div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+   一、函数的重载
+   一个函数通过传入参数的个数或者类型不同时，会有多种实现，并且每一种实现对应一个函数体，这个函数就叫函数的重载。
+   例：function aa(a,b){
+            //arguments
+            if(arguments.length==1){
+            	return "参数只有一个:"+a;
+            }
+            if(arguments.length==2){
+            	return "参数有两个:"+a+","+b;
+            }
+            if(arguments.length==3){
+            	return "参数有三个:"+a+","+b+","+arguments[2];
+            } 
+            if(arguments.length>3){
+            	return "参数太多了";
+            } 
+        }
+        alert(aa(12,"二"));
+
+
+
+
+二、函数的作用域(提高程序的逻辑性、安全性，还可以减少名字的冲突)
+    1. 作用域:一段代码的作用范围(一家公司的规章制度，只适用于本公司的员工).
+
+    2.全局变量:函数的外部的变量就叫全局变量。
+               没有使用var关键字声明的变量，也是全局变量。
+
+               在页面的任何位置都可以访问到
+
+               全局变量的作用范围是整个页面，表示它拥有全局的作用域
+
+    3.局部变量:函数内部声明的变量为局部变量。
+               函数的参数也是局部变量。
+
+               只能在函数内部访问 
+
+               局部变量的作用范围是这个函数内部
+    例1：var num=10;//全局变量
+    //alert(num);
+    num2=30;//全局变量
+    //alert(num2);
+    function fun(a,b){//形参//局部变量
+    	var num1=20;//局部变量
+    	//alert(num1);
+        alert(a);
+        alert(b);
+    	num3=50;//全局变量
+    }
+    fun(2,3);//实参
+    alert(num3);
+
+
+    例2：
+    var a=34;//全局变量的作用范围是整个页面，表示它拥有全局的作用域
+    function aa(){
+    	//var a=54;//局部变量的作用范围是这个函数内部
+    	alert(a);
+    }
+    aa();    
+ 三、函数的作用域链
+    一个函数嵌套另一个函数，它们的作用域形成了一条链子，这条链子就叫作用域链。
+    例:
+    var str="第一个";
+    function aa(){
+    	//var str="第二个";//是aa里面的局部变量
+    	function bb(){
+    		//var str="第三个";//是bb里面的局部变量
+    		alert(str);
+    	}
+    	bb();
+    }
+    aa();
+
+四、环境（就像人生存的环境一样，代码也有它的生存环境）
+   1.宿主环境（浏览器）
+   2.执行环境（它规定了变量与函数的访问权限）
+       全局环境:整个文档    
+       函数环境:一个函数就是一个环境   
+
+五、javascript的预解析顺序
+   1.如果有多个<script>标签对时，先一个一个的解析（从上到下）。
+   2.一行一行的解析，解析当前的script标签对里面的环境。
+   3.遇到var  function 时，会提前将变量或者函数提前解析到内存中。
+   4.然后再按流程控制的顺序进行解析。
+   5.再接着解析第二个<script>标签对，再按照上述的顺序解析里面的内容。
+
+
+六、回调函数
+   把一个函数指针作为另一个函数的参数，这个作为参数的函数就是回调函数(jia,fuza,pingfang)
+
+   简单来理解：把函数作为参数时，就是回调函数。
+   回调函数的方式 
+    1.可以将函数名作为参数传进来(函数指针)
+    2.可以将函数整体作为参数传进来
+
+   
+   例：四则运算
+    function jia (num1,num2) {
+    	document.write(num1+num2);
+    }//加法运算
+    function jian (num1,num2) {
+    	document.write(num1-num2);
+
+    }//减法运算
+    function cheng (num1,num2) {
+    	document.write(num1*num2);
+
+    }//乘法运算
+    function chu (num1,num2) {
+    	document.write(num1/num2);
+
+    }//除法运算
+    function jieguo (num1,num2,ysf) {
+    	return ysf(num1,num2);
+    }
+
+    jieguo(6,3,function jia (num1,num2) {
+    	//alert(num1+num2);
+    	document.write(num1+num2);
+    });
+
+七、闭包
+    函数a里面的函数b作为函数a的返回值，在外部访问这个函数b时，就形成了一个闭包。
+    (当函数a的内部函数b被函数a外的一个变量引用的时候，就创建了一个闭包。)
+    作用：1.可以在外部访问局部变量
+          2.可以将局部变量保存在内存中
+
+    例1.：
+    function aa(){
+        var a="局部变量";
+        function bb(){
+            return a;
+        }
+        return bb;
+    }
+    var c=aa();
+    alert(c());
+   
+    例2：
+    window.onload=function(){
+        var box=document.getElementsByClassName("box");
+        for(var i=0;i<3;i++){//局部变量
+         (function (i){
+            box[i].onclick=function(){
+                alert(i);
+            }
+         })(i)
+        }
+    }
+
+
+
+八、递归函数
+   在一个函数内部再调用本函数,这个函数就是递归函数。
+   执行原理：一层一层往进请求，当条件满足时，再一层一层往出返回。
+   例：阶乘的计算
+   function jie(num){
+        //5*4*3*2*1
+        if(num==1){
+           return num;
+        }else{
+           return num*jie(--num);
+        }
+    } 
+    alert(jie(5));
+
+
+
+
+
+
+

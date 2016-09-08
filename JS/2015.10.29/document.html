@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文档对象</title>
+	<script>
+/*	window.onload=function(){
+		//alert(document.title);
+		//document.title="大号鞋子";
+		//alert(document.title);
+		//alert(document.URL)
+		//document.bgColor="#000000";
+		//document.fgColor="#ffffff";
+		// var a =document.getElementsByClassName("one")[0];
+		// a.style.width="600px";
+		// a.style.height="600px";
+		// var b=document.getElementById("two");
+		// b.style.background="white";
+		// var div=document.getElementsByTagName("div")
+		// //alert(div.length);
+		// var c=document.getElementsByName("three")[0];
+		// c.style.background="black";
+		// c.style.width="300px";
+
+		//var inner=document.getElementsByClassName("inner")
+		function getClass(classname){
+			if(document.getElementsByClassName){
+				return document.getElementsByClassName(classname)
+			}else{
+				var alls=document.getElementsByTagName("*");
+				var arr=[];
+				for(var i=0;i<alls.length;i++){
+					if(alls[i].className==classname){
+						arr.push(alls[i]);
+					}
+				}
+				return arr;
+			}
+		}
+		var r=getClass("inner");
+		document.write(r .length);
+	}*/
+	/*window.onload=function(){
+		var bigbox=getClass("bigbox")[0];
+		var inner=getClass("inner",bigbox)[2];
+		inner.style.background="pink";
+		//classname：子容器要有类名，类名要加引号
+		//obj:父容器,表示从哪个父容器里来获取子容器
+		function getClass(classname,obj){
+			var obj=obj||document;//只要有一个为真它就为真，如果obj存在，就复制给声明的obj，如果不存在，就把document赋值给声明的obj（声明的obj表示从哪个对象里获取）
+			if(obj.getElementsByClassName){
+				//为真时表示的是现代浏览器
+				return obj.getElementsByClassName(classname)
+			}else{
+				var alls=obj.getElementsByTagName("*");//获取所有标签元素
+				var arr=[];
+				for(var i=0;i<alls.length;i++){//遍历这个alls集合
+					//if(arr[i].className==classname)
+					if(checkClass(alls[i].className,classname)){//每一个元素的className属性来与传进来的参数做判断
+						arr.push(alls[i]);//如果为真，则保存在数组中
+					}
+				}
+			}
+			return arr;
+		}
+		function checkClass(str,classname){
+			var newarr=str.split(" ");//将元素的类名（字符串）以空格分成数组，并保存在新的数组中
+			for(var i=0;i<newarr.length;i++){//遍历这个数组，拿数组中的每一个值与classname比较
+				if(newarr[i]==classname){//如果相同，表示找到了，这个函数返回真
+					return true;
+				}
+			}
+			return false;//等这个数组遍历完以后，如果还没有找到相同的类名，则这个函数返回假
+		}		
+		//var r=getClass("inner");
+		//document.write(r.length);
+	}*/
+
+	</script>
+	<style>
+	.one{
+		width: 300px;
+		height: 300px;
+		border: 1px solid red;
+	}
+	#two{
+		width: 100px;
+		height: 100px;
+		background:#000000;
+		border: 1px solid red
+	}
+	.bigbox{
+		border: 1px solid red;
+		overflow: hidden;
+	}
+	.inner{
+		width: 100px;
+		height: 150px;
+		border: 1px solid black;
+		float: left;
+		margin-right: 30px;
+	}
+	</style>
+</head>
+<body>
+	<!-- 大好时光琅琊榜 -->
+	<div class="one"></div>
+	<div id="two"></div>
+	<form action="">
+		<input type="text" name="three">
+	</form>
+	<div class="bigbox">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="inner"></div>
+</body>
+</html>

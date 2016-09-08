@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据类型</title>
+	<script>
+     //1.初始类型
+     //undefined
+     //未定义的
+     //typeof  检测数据类型的,一元运算符,它的检测结果是字符串类型
+     /*var aa=undefined;
+     alert(typeof typeof aa);*/
+     //number  整数与小数，特殊的数值
+     var num=20.5;  //十进制
+     var num1=parseInt(1001,2);    //二进制
+     var num2=parseInt(1001,8);    //八进制   513
+     //1001=1*80+0+0+1*83=513        513/8
+     var num3=01001;        //前导0 数字的0  八进制
+     var num4=0xff;         //十六进制
+     var num5=1e+11;        //科学计数法   1000000000000  1*10 11
+     var num6=Number.MAX_VALUE;   //最大数
+     var num7=Number.MIN_VALUE;   //最小数
+     //alert(num7);      
+     //alert(typeof num);
+     //string
+     //""\''  字符串
+     //\n   换行    转义字符(让普通的字符有特殊的意义)
+     //\t   制表符
+     //\b   空格
+     //\"   \'   \\
+
+     var str="www.\"baidu\".com";
+     //如何使用""和''
+     //嵌套使用，成对出现的，注意顺序（先进后出） 
+     var str1="我是一个'自豪的'中国人";
+     //alert(str1);
+     /*alert(typeof str1);*/
+
+     //boolean 布尔值  true真  false假  用于判断
+     var  boo=false;
+     //alert(boo);
+     //alert(typeof boo);
+     //null   空
+     //什么都没有，占位符,是给对象占位置的
+     //作用:1。初始化对象(是给对象占位置的)2.清空对象
+
+     /*var person=new Object;
+     person.name="貂蝉";
+     person.sex="women";
+     person.height="168cm";
+     person.say=function (){
+     	alert("会说话 ");
+     }
+     person=null;
+     person.say();*/
+     var obj=null;
+     alert(typeof obj);
+     //2.引用类型
+     //object   函数   数组
+
+     /*
+      类型             值(取出来的)            typeof的结果
+      undefined       undefined                 "undefined"
+      number          数值(十进制)               "number"
+      string           字符串                     "string"
+      boolean          true/false                 "boolean"
+      null              null                      "object"
+     */
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉菜单</title>
+	<style>
+	body,ul,li{
+		margin:0;
+		padding: 0;
+		list-style: none;
+	}
+	body{
+		height: 3000px;
+	}
+	a{
+		color: #333;
+		text-decoration: none;
+	}
+	.menubox{
+		width: 1000px;
+		height: 50px;
+		margin: 0 auto;
+		margin-top:500px;	
+	}
+	.yiji{
+		width:200px;
+		height: 50px;
+		background: #ccc;
+		float: left;
+		position: relative;
+	}
+	.yiji>a{
+		width:200px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		display: inline-block;
+	}
+	.yiji a:hover{
+		background: red;
+	}
+	.erji{
+		width: 200px;
+		height: 0;
+		background: #ccc;
+		position: absolute;
+		left: 0;
+		top:50px;
+		overflow: hidden;
+	}
+	.erji li>a{
+		width:200px;
+		height: 50px;
+		text-align: center;
+		background: #ccc;
+		line-height: 50px;
+		display: inline-block;
+	}
+	.erji a:hover{
+		background: red;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var menubox=$(".menubox")[0];
+		var cw=document.documentElement.clientWidth;
+		var sw=menubox.offsetWidth;
+		var yiji=$(".yiji");
+		var erji=$(".erji");
+		for(var i=0;i<yiji.length;i++){
+			yiji[i].index=i;
+			/*yiji[i].onmouseover=function(){
+				var lis=$("li",erji[this.index]);
+				var h=lis[0].offsetHeight;//应该从第一个li开始计算
+				erji[this.index].style.height=0;
+				animate(erji[this.index],{height:h*lis.length},400,Tween.Linear)
+			}
+			yiji[i].onmouseout=function(){
+				animate(erji[this.index],{height:0},400,Tween.Linear)
+			}*/
+			hover(yiji[i],function(){
+				var lis=$("li",erji[this.index]);
+				var h=lis[0].offsetHeight;//应该从第一个li开始计算
+				erji[this.index].style.height=0;
+				animate(erji[this.index],{height:h*lis.length},400,Tween.Linear)
+			},function(){
+				animate(erji[this.index],{height:0},400,Tween.Linear)
+			})
+			window.onscroll=function(){
+				var t=getObj().scrollTop;
+				if(t>=500){
+					menubox.style.cssText="position:fixed;top:0;left:"+(cw-sw)/2+"px;margin-top:0"
+				}else{
+					menubox.style.cssText="";
+				}
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="menubox">
+		<div class="yiji">
+			<a href="">首页</a>
+			<ul class="erji">
+				<li></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">新闻</a>
+			<ul class="erji">
+				<li><a href="">今日新闻</a></li>
+				<li><a href="">明日新闻</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">产品信息</a>
+			<ul class="erji">
+				<li><a href="">男鞋</a></li>
+				<li><a href="">女鞋</a></li>
+				<li><a href="">运动鞋</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">会员管理</a>
+			<ul class="erji">
+				<li><a href="">金牌会员</a></li>
+				<li><a href="">银牌会员</a></li>
+				<li><a href="">普通会员</a></li>
+				<li><a href="">不是会员</a></li>
+			</ul>
+		</div>
+		<div class="yiji">
+			<a href="">最新动态</a>
+			<ul class="erji">
+				<li><a href="">动态一</a></li>
+				<li><a href="">动态二</a></li>
+				<li><a href="">动态三</a></li>
+				<li><a href="">动态四</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

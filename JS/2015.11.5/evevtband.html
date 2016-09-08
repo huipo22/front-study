@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件绑定</title>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var box=$(".box")[0];
+		var box1=$(".box")[1];
+		// function aa(){
+		// 	// alert(box.className);
+		// 	document.write("aa");
+		// }
+		// function bb(){
+		// 	// box.style.background="yellow";
+		// 	document.write("bb");
+		// }
+		// function cc(){
+		// 	// alert("cc");
+		// 	document.write("cc");
+		// }
+		// box.addEventListener("click",aa,false)
+		// box.addEventListener("click",bb,false)
+		// box.addEventListener("click",cc,false)
+		// box.removeEventListener("click",aa,false)
+		// box.attachEvent("onclick",aa)
+		// box.attachEvent("onclick",bb)
+		// box.attachEvent("onclick",cc)
+		// box.detachEvent("onclick",cc)
+		// addEvent(box,"click",aa);
+		// addEvent(box,"click",bb);
+		// addEvent(box,"click",cc);
+		// removeEvent(box,"click",cc)
+		box.onclick=function(e){
+			var ev=e||window.event;
+			box1.innerHTML=ev;
+			var cx=ev.clientX;
+			var cy=ev.clientY;
+			var sx=ev.screenX;
+			var sy=ev.screenY;
+			var ox=ev.layerX||ev.offsetX;
+			var oy=ev.layerY||ev.offsetY;
+			box1.innerHTML="ox"+ox+"--oy"+oy;
+			// box1.innerHTML="cx"+cx+"--cy"+cy+"<br>"+"sx"+sx+"--sy"+sy;
+		}
+
+	})
+	</script>
+	<style>
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		width: 200px;
+		height: 300px;
+		border:1px solid red;
+		margin: 0 auto;
+		position: relative;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+</html>

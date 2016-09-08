@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚轮、图片放大与缩小</title>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var img=$("img")[0];
+		var speedw=6;
+		var speedh=6;
+		mouseWheel(img,big,small);
+		function big(){
+			var t=setInterval(move,60)
+			function move(){
+				var sw=img.offsetWidth;
+				var sh=img.offsetHeight;
+				var neww=sw+speedw;
+				var newh=sh+speedh;
+				if(neww>=600){
+					neww=600;
+					newh=600;
+					clearInterval(t);
+				}
+			img.style.width=neww+"px";
+			img.style.height=newh+"px";
+			}
+		}
+		function small(){
+			var t1=setInterval(move,60)
+			function move(){
+				var sw=img.offsetWidth;
+				var sh=img.offsetHeight;
+				var neww=sw-speedw;
+				var newh=sh-speedh
+				if(neww<=100){
+					neww=100;
+					newh=100;
+					clearInterval(t1);
+				}
+			img.style.width=neww+"px";
+			img.style.height=newh+"px";
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<img src="1.png" alt="" style="width:100px;height:100px;display:block;margin:0 auto">	
+</body>
+</html>

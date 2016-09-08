@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.banner{
+		width: 100%;
+		height: 400px;
+		background: red;
+	}
+	.banners{
+		width: 1200px;
+		height: 400px;
+		margin: 0 auto;
+		border: 1px solid yellow;
+	}
+	.banner-left{
+		width: 200px;
+		height: 400px;
+		background: #ccc;
+		float: left;
+	}
+	.banner-left-ul>li{
+		width: 200px;
+		height: 50px;
+		padding-left: 10px;
+		line-height: 50px;
+	}
+	.banner-left-ul>li:hover{
+		background: red;
+	}
+	.banner-center{
+		width: 800px;
+		height: 400px;
+		float: left;
+		position: relative;
+	}
+	.bannercon{
+		width: 800px;
+		height: 400px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: #ccc;
+		z-index: 4;
+	}
+	.bigbox{
+		width: 800px;
+		height: 400px;
+		position: relative;
+		z-index: 6;
+	}
+	.imgs{
+		width: 800px;
+		height: 400px;
+		position: relative;
+	}
+	.img{
+		width: 800px;
+		height: 400px;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.img.one{
+		background: red;
+		z-index: 3;
+	}
+	.img.two{
+		background: yellow;
+	}
+	.img.three{
+		background: blue;
+	}
+	.img.four{
+		background: green;
+	}
+	.lists{
+		width: 200px;
+		height: 30px;
+		position: absolute;
+		z-index: 4;
+		left: 300px;
+		bottom: 30px;
+		margin: 0 auto;
+	}
+	.lists li{
+		width: 28px;
+		height: 28px;
+		margin-left: 20px;
+		color: #fff;
+		background: #333;
+		border-radius: 50%;
+		float: left;
+		text-align: center;
+		line-height: 28px;
+	}
+	.lists li.one{
+		background: #ccc;
+	}
+	.banner-right{
+		width: 200px;
+		height: 400px;
+		background: #ccc;
+		float: left;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		/*  banner  */
+		var imgs=$(".img");
+		var lists=$(".lists")[0];
+		var lis=$("li",lists);
+		var banner=$(".banner")[0];
+		var bgarr=['red','yellow','blue','green'];//banner背景
+		for(var i=0;i<lis.length;i++){
+			lis[i].index=i;
+			lis[i].onmouseover=function(){
+				clearInterval(t);
+				for(var j=0;j<imgs.length;j++){
+					imgs[j].style.zIndex=2;
+					lis[j].style.background="#333";
+				}
+				imgs[this.index].style.zIndex=3;
+				lis[this.index].style.background="#ccc";
+				banner.style.background=bgarr[this.index];//操作banner背景
+			}
+			lis[i].onmouseout=function(){
+				t=setInterval(move,2000);
+				num=this.index+1;
+			}
+		}
+		var t=setInterval(move,2000);
+		var num=1;
+		function move(){
+			if(num==lis.length){
+				num=0;
+			}
+			for(var i=0;i<imgs.length;i++){
+				imgs[i].style.zIndex=2;
+				lis[i].style.background="#333";
+			}
+			imgs[num].style.zIndex=3;
+			lis[num].style.background="#ccc";
+			banner.style.background=bgarr[num];//自动轮播的时候   也需要操作banner背景
+			num++;
+		}
+
+		/* banner-left */
+		var bannerL=$(".banner-left")[0];
+		var blis=$("li",bannerL);
+		var bannerC=$(".bannercon");
+		var bgarr2=["red","pink","skyblue","indianred","indigo","purple"]
+		for(var i=0;i<blis.length;i++){
+			blis[i].index=i;
+			blis[i].onmouseover=function(){
+				if(this.index==0){	//判断第一个li
+					clearInterval(t);
+					for(var j=0;j<bannerC.length;j++){
+						bannerC[j].style.zIndex=2;
+					}
+					bannerC[0].style.zIndex=4;   //第一个bannercon的层级变高
+					/*
+						this.index    红 黄 蓝 绿  
+									  0  1  2  3     
+						num           红 黄 蓝 绿
+									  1  2  3  0
+					*/
+					// console.log(num)
+					// console.log(num-1)
+					banner.style.background=bgarr[num-1];//num发生变化，num比this.index多一个 需要重新赋值
+					t=setInterval(move,2000)
+				}else{
+					clearInterval(t);
+					for(var j=0;j<bannerC.length;j++){
+						bannerC[j].style.zIndex=2;
+					}
+					bannerC[this.index].style.zIndex=4;
+					banner.style.background=bgarr2[this.index]
+				}
+			}
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="banner">
+		<div class="banners">
+			<div class="banner-left">
+				<div class="banner-left-ul">
+					<li>11111111111</li>
+					<li>22222222222</li>
+					<li>33333333333</li>
+					<li>44444444444</li>
+					<li>55555555555</li>
+					<li>66666666666</li>
+					<li>77777777777</li>
+					<li>88888888888</li>
+				</div>
+			</div>
+			<div class="banner-center">
+				<div class="banner-center-bannercon">
+					<div class="bigbox bannercon">
+						<div class="imgs">
+							<div class="img one"></div>
+							<div class="img two"></div>
+							<div class="img three"></div>
+							<div class="img four"></div>
+						</div>
+						<ul class="lists">
+							<li class="one">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+						</ul>
+					</div>
+					<ul class="bannercon">AAAAAA</ul>
+					<ul class="bannercon">BBBBBB</ul>
+					<ul class="bannercon">CCCCCC</ul>
+					<ul class="bannercon">DDDDDD</ul>
+					<ul class="bannercon">EEEEEE</ul>
+					<ul class="bannercon">FFFFFF</ul>
+					<ul class="bannercon">GGGGGG</ul>
+				</div>
+			</div>
+			<div class="banner-right"></div>
+		</div>
+	</div>
+</body>
+</html>

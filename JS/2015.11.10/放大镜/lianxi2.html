@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+	.xiaobox{
+		width: 240px;
+		height: 170px;
+		border: 1px solid red;
+		float: left;
+		margin-right: 30px;
+		cursor: pointer;
+		position: relative;
+	}
+	.xiaoimg{
+		width: 240px;
+		height: 170px;
+	}
+	.xiaobox>span{
+		display: none;
+		width: 100px;
+		height: 120px;
+		background: yellow;
+		opacity: 0.2;
+		position: absolute;;
+		left: 0;
+		top: 0;
+	}
+	.xiaobox>.zhezhao{
+		width: 100%;
+		height: 100%;
+		position: absolute;;
+		left: 0;
+		top: 0;
+		z-index: 3
+	}
+	.dabox{
+		width:320px;
+		height: 225px;
+		border: 1px solid red;
+		position: relative;
+		display: none;
+		float: left;
+		overflow: hidden;
+	}
+	.daimg{
+		position: absolute;
+	}
+	</style>
+	<script src="../../js/function.js"></script>
+	<script>
+	$(function(){
+		var xiaobox=$(".xiaobox")[0];
+		var dabox=$(".dabox")[0];
+		var daimg=$(".daimg")[0];
+		var span=$("span")[0];
+		var zhezhao=$(".zhezhao")[0]
+
+		hover(xiaobox,function(){
+			dabox.style.display="block";
+			span.style.display="block"
+		},function(){
+			dabox.style.display="none ";
+			span.style.display="none"
+		})
+
+		xiaobox.onmousemove=function(e){
+			var ev=e||window.event;
+			var spanx=ev.offsetX-span.offsetWidth/2;
+			var spany=ev.offsetY-span.offsetHeight/2;
+			if(spanx<=0){
+				spanx=0;
+			}
+			if(spany<=0){
+				spany=0
+			}
+			if(spanx>=(xiaobox.offsetWidth-span.offsetWidth)){
+				spanx=xiaobox.offsetWidth-span.offsetWidth;
+			}
+			if(spany>=(xiaobox.offsetHeight-span.offsetHeight)){
+				spany=xiaobox.offsetHeight-span.offsetHeight;
+			}
+			span.style.left=spanx+"px";
+			span.style.top=spany+"px";
+			var imgx=spanx/(xiaobox.offsetWidth-span.offsetWidth);
+			var imgy=spany/(xiaobox.offsetHeight-span.offsetHeight);
+			daimg.style.left=-imgx*(daimg.offsetWidth-dabox.offsetWidth)+"px";
+			daimg.style.top=-imgy*(daimg.offsetHeight-dabox.offsetHeight)+"px";
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="xiaobox">
+		<img src="1.jpg" alt="" class="xiaoimg">
+		<span></span>
+		<div class="zhezhao"></div>
+	</div>
+	<div class="dabox">
+		<img src="1.jpg" alt="" class="daimg">
+	</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象</title>
+	<script>
+/*	function computer(){
+		this.pinpai="联想";
+		this.color="black"; 
+		this.size=14;
+		this.style="pc";
+		this.web=function(){
+			alert("可以上网");
+		}
+	}
+	var computer1=new computer();
+	computer1.web();*/
+/*	function personal(){}
+	var ZhangSan=new personal;
+	alert(ZhangSan)*/
+/*	var aa=new Object();
+	alert(aa)*/
+/*	var bb={}
+	alert(bb)*/
+/*	function person(){
+
+	}
+	var XiaoMing=new person;
+	XiaoMing.name="张小明";
+	XiaoMing.height="180cm";
+	XiaoMing.sex="boy";
+	XiaoMing.eat=function(){
+		alert("张小明会吃饭")
+	}
+	alert(XiaoMing.sex);*/
+/*	var XiaoMing={name:"张小明",height:"180cm",eat:function(){alert("会吃饭")}}
+	// XiaoMing.eat();
+	// XiaoMing["eat"]();
+	// alert(XiaoMing.name);
+	// XiaoMing=null;
+	// delete XiaoMing.name;
+	// alert(XiaoMing["height"])
+	for(var i in XiaoMing){
+		alert(XiaoMing[i]);
+	}*/
+/*	function myArray(){
+		// this.length=arguments.length;
+		for(var i in arguments){
+			this[i]=arguments[i]
+		}	
+	}
+	var arr=new myArray(12,34,56,78,90)
+	alert(arr[3])*/
+/*	function TV(){
+		this.size=40;
+		this.color="white"
+		this.pinpai="HTC"
+	}
+	TV.prototype.look=function(){
+		alert("看电视")
+	}
+	var tv1=new TV;
+	var tv2=new TV
+	tv1.look();
+	tv2.look();*/
+	//1.工厂函数（就是通过一个普通的函数进行封装）
+/*	function TV(color,size){
+		var tv={};
+		tv.color=color;
+		tv.size=size
+		tv.look=function(){
+			alert("看电视");
+		}
+		return tv;
+	}
+	var tv1=new TV("red",120);
+	alert(tv1.color);*/
+	//构造函数
+/*	function TV(color,size){
+		this.color=color;
+		this.size=size;
+		this.look=function(){
+			alert("看电视");
+		}
+	}
+	var tv2=new TV("white","12");
+	alert(tv2.color);*/
+	//prototype
+/*	function person(name,height,sex){
+		this.name=name;
+		this.height=height;
+		this.sex=sex;
+	}
+	person.prototype.say=function(){
+		alert("会说话");
+	}
+	var xiaoFang=new person;
+	xiaoFang.say();*/
+/*	function person(name,height,sex){
+		this.name=name;
+		this.height=height;
+		this.sex=sex;
+		this.say=function(){
+			alert("会说话")
+		}
+	}
+	function student(name,height,sex){
+		this.name=name;
+		this.height=height;
+	}
+	student.prototype=new person();
+	var wjw=new student("王金伟","175cm","boy");
+	//alert(wjw.name);
+	alert(wjw.height);*/
+	// Object.prototype.web=function(){
+	// 	alert("Object可以上网");
+	// }
+	function pc(){
+		this.size=14;
+		this.color="black";
+	}
+	pc.prototype.web=function(){
+		alert("pc的原型可以上网");
+	}
+	var pc1=new pc;
+	// pc1.web=function(){
+	// 	alert("pc1可以上网");
+	// }
+	 pc1.web();
+	// alert(pc1 instanceof Object);
+	//alert(pc.constructor)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>会动的盒子</title>
+	<script src="../2015.10.30/function.js"></script>
+	<script>
+	window.onload=function(){
+		var box=getClass("box")[0];
+		var t=setInterval(move,200);
+		var speed=5
+		function move(){
+			var w=parseInt(getStyle(box,"width"));
+			var h=parseInt(getStyle(box,"height"));
+			box.style.width=w+speed+"px";
+			box.style.height=h+speed+"px";
+			var newW=parseInt(w+speed);
+			if(newW>=400){
+				clearInterval(t);
+				function move2(){
+					var w=parseInt(getStyle(box,"width"));
+					var h=parseInt(getStyle(box,"height"));
+					box.style.width=w-speed+"px";
+					box.style.height=h-speed+"px";
+					var newW=parseInt(w+speed);
+					if(newW<=200){
+						clearInterval(t2)
+					}
+				}
+				var t2=setInterval(move2,200);
+			}
+		}
+	}
+	//当一个函数嵌套另一个函数是，里面函数的调用需放在定义的后面（原因是里面的函数环境是局部环境，只有执行到调用这个函数才会赋值，如果在定义之前调用，赋值不会成功，否则调用失败）
+	</script>
+	<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		background: #ccc;
+		margin: 0 auto;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

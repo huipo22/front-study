@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚轮、图片变大、变小</title>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+	<script>
+	$(function(){
+		var box=$("img")[0];
+		var speedw=6;
+		var speedh=6;
+		mouseWheel(box,big,small);
+		function big(){
+			var t=setInterval(move,60);
+			function move(){
+				var sw=box.offsetWidth;
+				var sh=box.offsetHeight;
+				var neww=sw+speedw;
+				var newh=sh+speedh;
+				if(neww>=600){
+					neww=600;
+					newh=600;
+					clearInterval(t);
+				}
+				box.style.width=neww+"px";
+				box.style.height=newh+"px";
+			}
+		}
+		function small(){
+			var t1=setInterval(move,60);
+			function move(){
+				var sw=box.offsetWidth;
+				var sh=box.offsetHeight;
+				var neww=sw-speedw;
+				var newh=sh-speedh;
+				if(neww<=100){
+					neww=100;
+					newh=100;
+					clearInterval(t1);
+				}
+				box.style.width=neww+"px";
+				box.style.height=newh+"px";
+			}	
+		}
+	})
+	</script>
+</head>
+<body>
+	<img src="1.png" alt="" style="width:100px;height:100px;background:red;display:block;margin:0 auto">
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习</title>
+	<style>
+	.box{
+		width: 120px;
+		height: 200px;
+		/*background: red;*/
+		border: 1px solid red;
+		position: relative;
+		margin: 0 auto;
+	}
+	</style>
+	<script src="../js/function.js"></script>
+	<script>
+	$(function(){
+		var box=$(".box")[0];
+		box.onclick=function(e){
+			var ev=e||window.event;
+			// box.innerHTML=ev;
+			var ox=ev.layerX||ev.offsetX;
+			var oy=ev.layerX||ev.offsetY;
+			box.innerHTML="ox"+ox+"--oy"+oy;
+		}
+	})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
